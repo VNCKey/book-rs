@@ -25,13 +25,22 @@ La ejecución de código en Rust puede realizarse mediante dos vías fundamental
 - Compilador directo, rustc, para tareas sencillas.
 - Cargo la herramienta estándar de gestión de proyectos, indispensable para el desarrollo moderno.
 
-=== Usando #term[rustc]
+=== Usando rustc
 
-Para comprender la esencia del proceso de compilación, es crucial familiarizarse
-con rustc, el compilador de Rust. Este método es ideal para archivos individuales o
-para entender cómo el código fuente se traduce en un ejecutable binario.
+rustc es el compilador oficial de Rust. Es el programa que transforma
+tu código fuente (archivos .rs) en ejecutables que tu computadora puede ejecutar.
 
-Fases del Proceso #term[rustc]
+Entender #term[rustc] te ayuda a comprender mejor lo que sucede "bajo el capó".
+
+Imagina que escribes una receta en español, pero tu horno solo entiende instrucciones
+en lenguaje de máquina. El compilador #term[rustc] es el traductor que convierte tu
+receta #term[código Rust] en instrucciones que el horno #term[CPU] puede ejecutar.
+
+Proceso de Compilación
+
+#include "../../utils/diagrama_rustc.typ"
+
+Fases del Proceso
 
 + Paso 1: Creación del Módulo Fuente
 
@@ -200,7 +209,7 @@ cargo run
 ```bash
 Compiling hola_mundo v0.1.0 (/ruta/hola_mundo)
  Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.42s
-  Running `target/debug/hola_mundo`  // (3)
+  Running `target/debug/hola_mundo`
 Hola, Rust!
 ```
 
@@ -216,16 +225,273 @@ Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
 Hola, Rust!
 ```
 
-Solo compilar sin ejecutar
-```
-cargo build
-```
+=== Variables con Rust
 
-El binario se genera en target/debug/:
+Let
 
-#table(
-  columns: (auto, 1fr),
-  [*Sistema*], [*Ubicación del ejecutable*],
-  [Windows], [`target\debug\hola_mundo.exe`],
-  [Linux/macOS], [`target/debug/hola_mundo`]
+#codly(
+  highlights : (
+    (line:2, start: 3,end:5, fill: rgb("#CBD4FF"), tag: "A"),
+    (line:2, start: 7,end:10, fill: rgb("#FFD9CB"), tag: "B"),
+    (line:2, start: 14,end:15, fill: rgb("#FCCBFF"), tag: "C"),
+  ),
 )
+```rust
+fn main() {
+  let edad = 25;
+  println!("Mi edad es {}", edad);
+}
+```
+
++ A: La palabra reservada #term[let] se usa para declarar variables inmutables
+  por defecto
+
++ B: Nombre de la variable #term[edad]
+
++ C: Asignación de tipo de valor entero #term[25]
+
+```yaml
+Mi edad es 25
+```
+
+Que pasa si queremos modificar el valor de una variable inmutable?
+
+#codly(
+  highlights : (
+    (line:3, start: 3,end:13, fill: rgb("#FCCBFF"), tag: "ERROR!!"),
+  ),
+)
+```rust
+fn main() {
+  let edad = 25;
+  edad = 26;
+  println!("Mi edad es {}", edad);
+}
+```
+
+Gracias a herramientas inteligentes como rust-analyzer y rustc, nuestros
+editores de código pueden analizar información avanzada e interactiva a través del
+Language Server Protocol (LSP). De esta manera, es posible visualizar errores,
+comprender por qué el código es incorrecto e incluso recibir sugerencias automáticas
+para corregirlo.
+
+```bash
+error[E0384]: No se puede asignar dos veces a la variable inmutable `edad`
+ --> src/main.rs:3:3
+3 |   edad = 26;
+  |
+help: consider making this binding mutable
+  |
+2 |   let mut edad = 25;
+  |       +++
+For more information about this error, try `rustc --explain E0384`.
+```
+
++ El Código de Error: [E0384]
+
+  Este es el identificador único y universal del problema.
+
+  Con documentacion #term[https://doc.rust-lang.org/error_codes/error-index.html]
+  exacta para el tipo de error y explicacion detallada de ese problema.
+
+
+variables mutables
+
+Si necesitas cambiar el valor de una variable, debes declararla
+explícitamente como mutable usando #term[let mut].
+
+#codly(
+  highlights : (
+    (line:2, start: 3,end:9, fill: rgb("#FCCBFF"), tag: "A"),
+    (line:4, start: 3, fill: rgb("#C7FFFA")),
+  ),
+)
+```rust
+fn main() {
+  let mut carro = "Toyota";
+  println!("Mi carro es {}", carro);
+  carro = "Honda";
+  println!("Mi nuevo carro es {}", carro);
+}
+```
+
++ A: La palabra reservada #term[let mut] se usa para declarar variables mutables que
+  cambian su valor a lo largo del programa.
+
+Shadowing
+
+El shadowing permite declarar una nueva variable con el mismo
+nombre que una anterior.
+
+La nueva variable "sombrea" a la anterior.
+
+#codly(
+  highlights : (
+    (line:4, start: 3, fill: rgb("#FCCBFF"), tag: "A"),
+  ),
+)
+```rust
+fn main() {
+  let mut edad = 25;
+  println!("Mi edad es {}", edad);
+  let edad = "Mi edad es 35";
+  println!("{}", edad);
+}
+```
+
+- A:
+
+  - Rust permite declarar una nueva variable con el mismo nombre que una anterior.
+
+  - La nueva variable "sombrea" a la anterior.
+
+  - Shadowing permite cambiar el tipo de una variable.
+
+```yaml
+Mi edad es 25
+Mi edad es 35
+```
+
+Lo que no se puede hacer es cambiar el tipo de una variable sin "sombrear".
+
+#codly(
+  highlights : (
+    (line:2, start: 1, fill: rgb("#FCCBFF"), tag: "ERROR!"),
+  ),
+)
+```rust
+let mut texto = "Hola";
+texto = 5;
+```
+
+Scopes
+
+El scope determina dónde una variable es válida en tu código.
+En Rust, el scope está definido por llaves { }.
+
+
+#codly(
+  highlights : (
+    (line:9, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:10, start: 3, fill: rgb("#FCCBFF"), tag: "ERROR!"),
+  ),
+)
+```rust
+fn main() {
+  let x = 5;
+  println!("Valor de x: {x}");
+  {
+    let x = x * 2;
+    let y = x;
+    println!("Dentro del scope x: {x}");
+    println!("Dentro del scope y: {y}");
+  }
+  //println!("Valor de y: {y}");
+  println!("Valor de x: {x}");
+}
+```
+- A:
+
+  - La variable #term[x] y #term[y] son válidas dentro del scope en el que fueron declaradas.
+
+  - Terminado el scope, las variables #term[x] y #term[y] son liberadas.
+
+  - Ya no se pueden usar fuera del scope en el que fueron declaradas.
+
+Nota: Puedes crear scopes anidados.
+
+```yaml
+Valor de x: 5
+Dentro del scope x: 10
+Dentro del scope y: 10
+Valor de x: 5
+```
+
+Constantes
+
+Las constantes son valores globales que nunca cambian y deben tener un tipo explícito.
+No tienen una dirección de memoria fija. Se utiliza para valores que
+son absolutamente fijos y
+conocidos de antemano, como constantes matemáticas, límites, o configuraciones fijas.
+
+#codly(
+  highlights : (
+    (line:1, start: 1,end:8, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:1, start: 9,end:13, fill: rgb("#CBD4FF"), tag: "B"),
+    (line:4, start: 1, fill: rgb("#C7FFFA"), tag: "C"),
+    (line:6, start: 1, fill: rgb("#FCCBFF"), tag: "D"),
+  ),
+)
+```rust
+const PI: f64 = 3.14159265359;
+
+fn main() {
+  const PI: f64 = 5.14;
+  println!("Valor de PI: {}", PI);
+  //PI = 3.12;
+}
+```
+
++ A:
+
+  Las constantes siempre usan #term[SCREAMING_SNAKE_CASE].
+
++ B:
+
+  El tipo debe ser explícito #term[:f64] en este caso flotante.
+
++ C:
+
+  Rust permiten sombrear constantes con el mismo nombre.
+
++ D:
+
+  Rust no permite mutar constantes.
+
+```yaml
+Valor de PI: 5.14
+```
+
+Valores estaticos
+
+Las variables estáticas tienen una ubicación fija en memoria y viven
+durante toda la ejecución del programa.
+Se inicializan al inicio de la ejecución del programa (cuando el programa se carga,
+antes de que se ejecute la función main).
+#codly(
+  highlights : (
+    (line:1, start: 1,end:24, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:4, start: 3, fill: rgb("#FCCBFF"), tag: "B"),
+    (line:5, start: 3, fill: rgb("#FCCBFF"), tag: "C"),
+  ),
+)
+```rust
+static PROTOCOLO_VERSION: u8 = 2;
+
+fn main() {
+  // let PROTOCOLO_VERSION:u8 = 3;
+  // PROTOCOLO_VERSION: u8 = 8;
+  println!("Protocolo v{}", PROTOCOLO_VERSION);
+}
+```
+
++ A:
+
+  Declaramos un valor estatico con #term[static]
+
++ B
+
+  No podemos sombrear un valor estatico con el mismo nombre.
+
++ C
+
+  No podemos mutar un valor estatico.
+
+```yaml
+Protocolo v2
+```
+
+Statements & Expressions
+
+Una sentencia es una instrucción que realiza una acción y no devuelve un valor. En Rust, la mayoría de las sentencias terminan con un punto y coma (;).
+

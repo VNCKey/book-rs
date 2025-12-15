@@ -166,6 +166,9 @@ de instalar Rust.
     ```
   )
 
+
+
+
 === Gestión de Versiones con Rustup
 
 + Actualizar Rust
@@ -192,8 +195,8 @@ de instalar Rust.
 
 === Cargo
 
-Cargo es el sistema de compilación y gestor de paquetes oficial de Rust. 
-Es una herramienta fundamental que simplifica todo el ciclo de desarrollo, desde 
+Cargo es el sistema de compilación y gestor de paquetes oficial de Rust.
+Es una herramienta fundamental que simplifica todo el ciclo de desarrollo, desde
 la creación de proyectos hasta la gestión de #term[dependencias] y la #term[compilación].
 
 Cargo se instala automáticamente cuando instalas Rust a través de rustup.
@@ -204,6 +207,3 @@ Cargo se instala automáticamente cuando instalas Rust a través de rustup.
 - Ejecuta tests
 - Genera documentación
 - Publica paquetes en crates.io
-
-
-
