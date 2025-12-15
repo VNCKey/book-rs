@@ -12,6 +12,7 @@
 
 
 
+
 // Tabla de contenidos
 #outline(
   title: [Contenido],
@@ -42,7 +43,9 @@
 // ========================================
 // CAPÍTULO 1: PRIMEROS PASOS
 // ========================================
+#import "src/utils/tables.typ": apply-rust-style
 
+#show: apply-rust-style
 = Primeros pasos
 
 #v(1em)

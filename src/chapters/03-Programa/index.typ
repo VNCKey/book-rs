@@ -12,6 +12,7 @@
   number-format: none,
   zebra-fill: none,
   stroke: none,
+  fill: rgb("#FBFAFB"),  // 👈 Color de fondo general
 )
 
 
@@ -162,8 +163,69 @@ edition = "2021"
 
 Punto de entrada: main.rs
 
+#codly(
+  highlights : (
+    (line:1, start: 1 , end: 9 ,  fill: rgb("#CBD4FF"), tag: "A"),
+    (line:2, start: 5 , end: 12 ,  fill: rgb("#C7FFFA"), tag: "B"),
+    (line:1, start: 11 , end: 12 ,  fill: rgb("#FFD9CB"), tag: "C"),
+    (line:3, start: 1 ,  fill: rgb("#FFD9CB"), tag: "C"),
+  ),
+)
 ```rust
 fn main() {
     println!("Hola, Rust!");
 }
 ```
+
++ A: Define la función principal del programa
++ B: Es una macro que imprime texto en la consola
++ C: Delimitan el bloque de código de la función
+
+
+Compilar y Ejecutar
+
+```bash
+cargo run
+```
+
+
+#codly(
+  highlights : (
+    (line:1, start: 1 , fill: rgb("#CBD4FF"), tag: "A"),
+    (line:2, start: 2 , fill: rgb("#C7FFFA"), tag: "B"),
+    (line:3, start: 3 , fill: rgb("#FFD9CB"), tag: "C"),
+    (line:4, start: 1 , fill: rgb("#FCCBFF"), tag: "D"),
+  ),
+)
+```bash
+Compiling hola_mundo v0.1.0 (/ruta/hola_mundo)
+ Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.42s
+  Running `target/debug/hola_mundo`  // (3)
+Hola, Rust!
+```
+
++ A: Cargo compila el proyecto (solo la primera vez o si hay cambios)
++ B: Perfil de compilación: dev (desarrollo, sin optimizaciones)
++ C: Ruta del ejecutable que se está ejecutando
++ D: Output de tu programa
+
+Si no modificaste el código, la segunda ejecución será instantánea:
+```bash
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+ Running `target/debug/hola_mundo`
+Hola, Rust!
+```
+
+Solo compilar sin ejecutar
+```
+cargo build
+```
+
+El binario se genera en target/debug/:
+
+#table(
+  columns: (auto, 1fr),
+  [*Sistema*], [*Ubicación del ejecutable*],
+  [Windows], [`target\debug\hola_mundo.exe`],
+  [Linux/macOS], [`target/debug/hola_mundo`]
+)

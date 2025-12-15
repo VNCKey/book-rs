@@ -291,3 +291,12 @@
 
 // Nota: Importa este archivo al inicio de tu main.typ con:
 // #import "src/config.typ": *
+
+
+
+
+#show table: set table(
+  stroke: (paint: rgb("#ff6b35"), thickness: 1pt),
+  fill: (x, y) => if y == 0 { rgb("#ff6b35").lighten(85%) } else if calc.odd(y) { rgb("#fff5f0") } else { white },
+  inset: 8pt,
+)
