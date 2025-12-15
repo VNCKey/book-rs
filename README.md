@@ -1,5 +1,5 @@
 
-# 📋 Prerrequisitos
+# Prerrequisitos
 
 ## Instalar Rust
 
@@ -19,7 +19,7 @@ Sigue las instrucciones en pantalla. Cuando termine, reinicia tu terminal o ejec
 source $HOME/.cargo/env
 ```
 
-### 🪟 Windows
+### Windows
 
 **Opción 1: Instalador oficial (Recomendado)**
 
