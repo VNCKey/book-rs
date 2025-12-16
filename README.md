@@ -109,7 +109,7 @@ Para compilar automáticamente al guardar, abre la configuración de Zed (`Ctrl+
 ## Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU-USUARIO/TU-REPO.git
+git clone https://github.com/VNCKey/book-rs.git
 cd TU-REPO
 ```
 
@@ -132,53 +132,10 @@ typst compile main.typ
 ```bash
 typst watch main.typ
 ```
+o
+```bash
+ypst watch main.typ output/main.pdf
+```
 
 **Opción 3: En Zed**
 Si configuraste `exportPdf: "onSave"`, solo guarda el archivo (`Ctrl+S` o `Cmd+S`) y el PDF se generará automáticamente.
-
-# Cómo contribuir
-
-1. **Actualiza tu repositorio local:**
-   ```bash
-   git pull origin main
-   ```
-
-2. **Haz tus cambios** en los archivos `.typ` usando Zed
-
-3. **Revisa tus cambios:**
-   ```bash
-   git status
-   git diff
-   ```
-
-4. **Confirma tus cambios:**
-   ```bash
-   git add .
-   git commit -m "Descripción clara de tus cambios"
-   ```
-
-5. **Sube tus cambios:**
-   ```bash
-   git push origin main
-   ```
-
-## Estructura ...
-
-```
-.
-├── main.typ              # Documento principal
-├── .../            
-│   └── 
-├── assets/               # Imágenes y recursos
-│   └── images/
-├── .gitignore            # Archivos ignorados por Git
-└── README.md             # Este archivo
-```
-
-## Recursos útiles
-
-- [Documentación oficial de Typst](https://typst.app/docs/)
-- [Tutorial de Typst](https://typst.app/docs/tutorial/)
-- [Referencia de Typst](https://typst.app/docs/reference/)
-- [Documentación de Tinymist](https://github.com/Myriad-Dreamin/tinymist)
-- [Guía de Zed](https://zed.dev/docs)
