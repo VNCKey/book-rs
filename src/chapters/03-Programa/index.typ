@@ -8,6 +8,8 @@
     bash: (name: "Terminal", icon: "🐧", color: rgb("#E2E2E2")),
     yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
     toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),
+    py: (name: "Python", icon: "🐍", color: rgb("#C7FFFA")),
+    js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
   ),
   number-format: none,
   zebra-fill: none,
@@ -45,12 +47,26 @@ Fases del Proceso
 + Paso 1: Creación del Módulo Fuente
 
   Todo comienza con el código fuente, que tradicionalmente lleva la extensión #term[.rs].
-
+  #codly(
+    highlights : (
+      (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"), tag: "A"),
+      (line:1, start: 4,end: 7,fill: rgb("#C7FFFA"), tag: "B"),
+    ),
+  )
   ```rust
   fn main() {
       println!("Compilador directo rustc."); //Archivo: main.rs
   }
   ```
+
+  - A:
+
+    Define la función principal y obligatoria de un programa ejecutable en Rust.
+
+  - B:
+
+    Es un nombre reservado y especial que el compilador de Rust y el sistema operativo 
+    buscan para saber dónde empezar a ejecutar el código.
 
 + Paso 2: Compilación
 
@@ -493,5 +509,119 @@ Protocolo v2
 
 Statements & Expressions
 
-Una sentencia es una instrucción que realiza una acción y no devuelve un valor. En Rust, la mayoría de las sentencias terminan con un punto y coma (;).
+Una sentencia es una instrucción que realiza una acción y no devuelve un valor.
+En Rust, la mayoría de las sentencias terminan con un punto y coma #term[;].
 
+Una expresión es cualquier pieza de código que se evalúa y devuelve un valor.
+
+#codly(
+  highlights : (
+    (line:2, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:5, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:3, start: 5, fill: rgb("#FCCBFF"), tag: "B"),
+    (line:4, start: 5, fill: rgb("#FFD9CB"), tag: "D"),
+    (line:7, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+  ),
+)
+```rust
+fn main() {
+  let y = {
+    let z = 3;
+    z + 1
+  };
+
+  println!("y = {}", y);
+}
+```
+
++ A:
+
+  - Tenemos la primera Sentencia (statement) #raw("let y = { ... };", lang: "rust"),
+    una unidad de ejecución que no produce un valor que pueda ser
+    utilizado por otra parte del código.
+
+  - Expresión Asignada: #raw("{ ... }", lang: "rust") La expresión de bloque se
+    evalúa y devuelve un valor
+
++ B:
+
+  - Tenemos la segunda Sentencia (statement)
+    La sentencia #term[let] realiza la acción de vincular un valor a un nombre y nunca
+    devuelve un valor, Rust evita side-effect oculto.
+
+    #raw("let y = (let x = 5); ERROR!!!!",lang:"rust")
+
+    Ejemplos:
+
+    #term[Javascript]```js
+    let x = 1;
+    let y = (x = 2, x++);   // y = 2; x = 3
+    console.log(y, x);      // 2 3 = side-effect dentro de la expresión
+
+    if (count = 0) { }   // 0 es falsy = nunca entra, pero *asigna*
+    ```
+
+    #term[Python]```py
+    b = 5
+    a = (b := 1) + (b := 2)   # a = 2
+    print("Valor de a es: ",a) #Valor de a es: 3
+    print("Valor de b es: ",b) #Valor de b es: 2
+    ```
+
+  - Rust prohíbe que #term[let] devuelva valor y así evita bugs
+    clásicos como #raw("if (x = 5)",lang:"rust").
+
+  - #raw("println!",lang:"rust") devuelve #term[unit type ()],
+    y la llamada como declaración.
+
+  - Rust prohíbe que #term[let] sea una expresión para eliminar una
+    clase entera de errores que sí existen en lenguajes donde
+    la asignación devuelve valor.
+
+  - La regla de oro en Rust es que la mayoría de las sentencias
+    terminan con un #term[;] .
+
++ C:
+
+  - Tenemos la primera Expresión (Expression)
+    Cuando omites el punto y coma en la última línea de un bloque, le
+    estás diciendo al compilador:
+
+    "Quiero que el valor resultante de esta operación sea el valor de retorno de todo el bloque."
+
++ D:
+
+  Por ultimo, tenemos un Statement
+
+  Aunque la llamada a la macro println! es técnicamente una expresión
+  (ya que se evalúa), su valor de retorno es el tipo unitario () (pronunciado "unit").
+```yaml
+y = 4
+```
+En caso de poner #term[;] al final se convierte en una sentencia
+(statement) y devuleve un unit type ().
+#codly(
+  highlights : (
+    (line:4, start: 5, fill: rgb("#D6FFCB"), tag: "A"),
+  ),
+)
+```rust
+fn main() {
+  let y = {
+    let z = 3;
+    z + 1;
+  };
+  println!("y = {:?}", y);
+}
+```
+
++ A:
+
+  Devuelve unit type ()```yaml
+  y = ()
+  ```
+
+Anotaciones de Tipo
+
+Rust infiere tipos automáticamente, pero puedes y a veces debes
+anotarlos explícitamente.

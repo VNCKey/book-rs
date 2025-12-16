@@ -1,6 +1,22 @@
-#import "@preview/zebraw:0.6.1":*
-#show: zebraw
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.1": *
+#show: codly-init.with()
 #import "../../config.typ": term
+
+#codly(
+  languages: (
+    rust: (name: "Rust", icon: "🦀", color: rgb("#FFD8C9")),
+    bash: (name: "Terminal", icon: "🐧", color: rgb("#E2E2E2")),
+    yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
+    toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),
+    py: (name: "Python", icon: "🐍", color: rgb("#C7FFFA")),
+    js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
+  ),
+  number-format: none,
+  zebra-fill: none,
+  stroke: none,
+  fill: rgb("#FBFAFB"),  // 👈 Color de fondo general
+)
 
 == Instalación de Rust
 
@@ -14,12 +30,9 @@ idéntico en todos los sistemas operativos.
 
 + Ejecuta el siguiente comando para descargar e iniciar el instalador de Rust:
 
-#zebraw(
-  numbering: false,
-  ```bash
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  ```
-)
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 Este comando descarga el instalador de #term[rustup], que configurará:
 
@@ -36,29 +49,23 @@ estándar.
 
 Verás algo como esto:
 
-#zebraw(
-  numbering: false,
-  ```bash
-  --snip--
-  Rust is installed now. Great!
+```bash
+--snip--
+Rust is installed now. Great!
 
-  To get started you may need to restart your current shell.
-  This would reload your PATH environment variable to include
-  Cargo's bin directory ($HOME/.cargo/bin).
+To get started you may need to restart your current shell.
+This would reload your PATH environment variable to include
+Cargo's bin directory ($HOME/.cargo/bin).
 
-  To configure your current shell, you need to source
-  the corresponding env file under $HOME/.cargo.
-  ```
-)
+To configure your current shell, you need to source
+the corresponding env file under $HOME/.cargo.
+```
 
 Reinicia tu terminal o ejecuta:
 
-#zebraw(
-  numbering: false,
-  ```bash
-  source $HOME/.cargo/env
-  ```
-)
+```bash
+source $HOME/.cargo/env
+```
 
 === Windows
 
@@ -111,16 +118,13 @@ de instalar Rust.
 
   Cuando aparezca el menú, simplemente presiona Enter para la instalación estándar:
 
-  #zebraw(
-    numbering: false,
-    ```bash
-    --snip--
-    1) Proceed with standard installation (default - just press enter)
-    2) Customize installation
-    3) Cancel installation
-    >1
-    ```
-  )
+  ```bash
+  --snip--
+  1) Proceed with standard installation (default - just press enter)
+  2) Customize installation
+  3) Cancel installation
+  >1
+  ```
 
   En la mayoría de casos es necesario cerrar y volver a abrir la terminal
   para que Windows reconozca los nuevos comandos
@@ -130,22 +134,17 @@ de instalar Rust.
 
   Ejecuta los siguientes comandos en tu terminal:
 
-  #zebraw(
-  numbering: false,
   ```bash
   rustc --version  # rustc 1.89.0 (29483883e 2025-08-04)
   cargo --version  # cargo 1.89.0 (c24e10642 2025-06-23)
   rustup --version # rustup 1.27.0 (2024-08-14)
   ```
-  )
 
 + Solución de Problemas Comunes
 
   + Linux/macOS: "comando no encontrado"
 
-    Si después de instalar Rust sigues viendo command not found:#zebraw(
-    numbering: false,
-    ```bash
+    Si después de instalar Rust sigues viendo command not found:```bash
     # Verifica que $HOME/.cargo/bin esté en tu PATH
     echo $PATH | grep .cargo
 
@@ -159,12 +158,9 @@ de instalar Rust.
 
     - Reinicia tu terminal. Este es el problema más común.
     - Verifica que la instalación se completó sin errores.
-    - Verifica manualmente que existe: #zebraw(
-    numbering: false,
-    ```bash
+    - Verifica manualmente que existe: ```bash
     dir $env:USERPROFILE\.cargo\bin\rustc.exe
     ```
-  )
 
 
 
@@ -173,23 +169,17 @@ de instalar Rust.
 
 + Actualizar Rust
 
-  #zebraw(
-  numbering: false,
-  ```bash
-  rustup update
-  ```
-)
+```bash
+rustup update
+```
 
 + Cambiar entre canales
 
-  #zebraw(
-  numbering: false,
-  ```bash
-  rustup default stable   # Canal estable (recomendado)
-  rustup default beta     # Canal beta
-  rustup default nightly  # Canal nightly (experimental)
-  ```
-)
+```bash
+rustup default stable   # Canal estable (recomendado)
+rustup default beta     # Canal beta
+rustup default nightly  # Canal nightly (experimental)
+```
   No necesitas instalar #term[nightly] a menos que uses características experimentales
   o herramientas específicas que lo requieran.
 
