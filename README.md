@@ -110,7 +110,6 @@ Para compilar automáticamente al guardar, abre la configuración de Zed (`Ctrl+
 
 ```bash
 git clone https://github.com/VNCKey/book-rs.git
-cd TU-REPO
 ```
 
 ## Abrir en Zed

@@ -67,7 +67,7 @@
 ]
 
 // ========================================
-// BADGE "RUST PERÚ" - Colores patrios
+// BADGE "RUST PERÚ" - Diseño Premium
 // ========================================
 #place(top + right, dx: -2.5cm, dy: 2.5cm)[
   #rect(
@@ -77,8 +77,6 @@
       angle: 90deg
     ),
     inset: (x: 15pt, y: 8pt),
-    radius: 20pt,
-    stroke: 3pt + rgb("#D91023")
   )[
     #text(
       size: 14pt,
@@ -176,7 +174,7 @@
     stroke: none,
   )[
     #grid(
-      columns: (1fr, auto),
+      columns: (auto, auto),
       align: (left + horizon, right + horizon),
       inset: (x: 2.5cm, y: 0pt),
 
