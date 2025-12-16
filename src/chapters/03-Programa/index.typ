@@ -65,7 +65,7 @@ Fases del Proceso
 
   - B:
 
-    Es un nombre reservado y especial que el compilador de Rust y el sistema operativo 
+    Es un nombre reservado y especial que el compilador de Rust y el sistema operativo
     buscan para saber dónde empezar a ejecutar el código.
 
 + Paso 2: Compilación
@@ -621,7 +621,197 @@ fn main() {
   y = ()
   ```
 
-Anotaciones de Tipo
+== Sistema de Memoria
 
-Rust infiere tipos automáticamente, pero puedes y a veces debes
-anotarlos explícitamente.
+La seguridad de memoria de Rust garantiza que un programa nunca acceda a memoria
+inválida ni cometa errores peligrosos al manejar recursos. En lenguajes como C y C++,
+esta responsabilidad recae por completo en el programador, lo que abre la puerta a
+introducir accidentalmente vulnerabilidades como desbordamientos de búfer,
+use-after-free, double free o data races.
+
+Rust elimina estos problemas desde su diseño.
+
+Todo esto sin la necesidad de un garbage collector y sin costo adicional en tiempo
+de ejecución. Este enfoque permite escribir software seguro y eficiente.
+
+Los primeros conceptos pilares es comprender como se administra la memoria. Rust
+divide la memoria en dos grandes regiones Stack y Heap, su diferencia es
+esencial para evitar errores como:
+
+- use-after-free
+- double free
+- dangling pointers
+- data races
+
+Stack
+
+El Stack es una región de la memoria RAM para almacenar datos cuya vida
+útil y tamaño son conocidos en tiempo de compilación.
+
+
+```rust
+fn main() {
+    let numero: u8 = 5;
+    let numero2 = numero;
+}
+```
+
+#include "../../utils/stack.typ"
+
+
+Heap
+
+El Heap es una región de la memoria RAM para almacenar datos cuya vida útil
+y tamaño son conocidos en tiempo de ejecución.
+
+
+
+#codly(
+  highlights : (
+    (line:2, start: 12, end: 19, fill: rgb("#C7FFFA"), tag: "A"),
+    (line:2, start: 23, fill: rgb("#CBD4FF"), tag: "B"),
+    (line:3, start: 3, fill: rgb("#FFD9CB"), tag: "C"),
+    (line:6, start: 3, fill: rgb("#FCCBFF"), tag: "D"),
+  ),
+)
+```rust
+fn main() {
+  let texto: String = String::from("Rûst");
+  let texto2: String = texto;
+
+  println!("{texto2}");
+  //println!("{texto1}");
+}
+```
+
++ A:
+
+  - String es un tipo de dato que se almacena en el Heap y su tamaño es
+    desconocido en tiempo de compilación.
+
+  - Se usa para representar texto dinámico, cuya longitud o
+    contenido puede cambiar en tiempo de ejecución.
+
+
++ B:
+
+  - Sirve para construir una String a partir de un &str por ejemplo un "Hola"
+    u otros tipos convertibles, como otro mismo String.
+
+  - Es equivalente a .to_string() en muchos casos, pero se prefiere String::from()
+    por ser más explícito y genérico.
+
++ C:
+
+  - texto tiene un comportamiento llamado Move cuando texto2 la consume.
+
+  - Después de la asignación, texto ya no es válido, puesto que el compilador no te
+    dejará usarlo, move semantics.
+
+  - Primera regla de Ownership solo puede haber un único propietario y es por esta razon
+    que Rust no permite que dos variables apunten al mismo dato en el Heap.
+
+  - texto2 es ahora el propietario del String "Rûst"
+
+  - println!("{texto}");
+
++ D:
+
+  - El uso de la variable texto es invalido, ya que fue movida a texto2.
+
+
+  #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+
+  #let rust-orange = rgb("#ff6b35")
+  #let stack-blue = rgb("#4a90e2")
+  #let heap-green = rgb("#27ae60")
+
+  #let stack-box(pos, var-name, ptr, len, cap, valid: true) = {
+    let fill-color = if valid { stack-blue.lighten(90%) } else { gray.lighten(80%) }
+    let text-color = if valid { black } else { gray }
+
+    node(
+      pos,
+      align(left)[
+        #text(size: 9pt, weight: "bold", fill: if valid { rust-orange } else { gray })[#var-name]
+        #if not valid { text(size: 7pt, fill: red)[ ✗] } \
+        #line(length: 100%, stroke: 0.5pt + gray) \
+        #text(size: 7pt, fill: text-color)[ptr: #text(font: "monospace", fill: stack-blue)[#ptr]] \
+        #text(size: 7pt, fill: text-color)[len: #text(font: "monospace")[#len]] \
+        #text(size: 7pt, fill: text-color)[cap: #text(font: "monospace")[#cap]]
+      ],
+      width: 35mm,
+      fill: fill-color,
+      stroke: 2pt + if valid { stack-blue } else { gray },
+      corner-radius: 5pt,
+      inset: 8pt,
+    )
+  }
+
+  #let heap-box(pos, content, bytes, addr) = node(
+    pos,
+    align(left)[
+      #text(size: 8pt, weight: "bold", fill: heap-green)[Datos en Heap] \
+      #line(length: 100%, stroke: 0.5pt + gray) \
+      #text(size: 7.5pt, font: "monospace")[#content] \
+      #text(size: 6.5pt, fill: gray)[bytes: #bytes] \
+      #text(size: 6.5pt, fill: gray)[addr: #text(font: "monospace")[#addr]]
+    ],
+    width: 38mm,
+    fill: heap-green.lighten(90%),
+    stroke: 2pt + heap-green,
+    corner-radius: 5pt,
+    inset: 8pt,
+  )
+
+  #figure(
+    kind: "diagram",
+    supplement: [Diagrama],
+    caption: [Move semántico: el ownership se transfiere de `texto` a `texto2`],
+
+    diagram(
+      spacing: (15mm, 10mm),
+      edge-stroke: 1.5pt,
+      edge-corner-radius: 5pt,
+      mark-scale: 80%,
+
+      // Stack label
+      node((0.5, -0.5), text(size: 10pt, weight: "bold", fill: stack-blue)[STACK]),
+
+      // texto (inválido después del move)
+      stack-box((0, 0), [texto], [0x582...3d00], [5], [5], valid: false),
+
+      // Flecha de move
+      edge((0, 0), (1, 0), "-|>",
+        label: text(size: 8pt, fill: rust-orange, weight: "bold")[Move 📦],
+        stroke: rust-orange + 2pt
+      ),
+
+      // texto2 (nuevo owner)
+      stack-box((1, 0), [texto2], [0x582...3d00], [5], [5], valid: true),
+
+      // Flecha al heap
+      edge((1, 0), (1, 1), "-|>",
+        label: text(size: 7pt)[ptr],
+        stroke: heap-green + 1.5pt
+      ),
+
+      // Heap label
+      node((1, 0.5),
+        place(dx: 45mm)[
+          #text(size: 10pt, weight: "bold", fill: heap-green)[HEAP]
+        ]
+      ),
+
+      // Datos en heap
+      heap-box((1, 1), [`[R,û,s,t]`], [[82,195,187,115,116]], [0x582...3d00]),
+
+      // Nota explicativa
+      node((0, 0.8),
+        text(size: 7pt, fill: red, style: "italic")[
+          ✗ texto inválido \
+          (ownership movido)
+        ]
+      ),
+    )
+  ) <diag-string-move>
