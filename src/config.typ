@@ -1,26 +1,25 @@
 // ========================================
-// CONFIGURACIÓN PROFESIONAL PARA LIBRO
-// config.typ - Curso de Rust 2026
+// Curso de Rust 2026
 // ========================================
 
 // ----------------------------------------
 // 1. FUENTES
 // ----------------------------------------
-//#let crimson = "Crimson Pro"
+#let crimson = "Crimson Pro"
 
 #set text(
-  //font: crimson,
-  size: 11pt,           // 11pt es el estándar para libros (12pt es un poco grande)
+  font: crimson,
+  size: 12pt,
   lang: "es",
-  hyphenate: true,      // ⭐ IMPORTANTE: Separación silábica
-  fallback: true        // Usar fuentes alternativas si falta algún glyph
+  hyphenate: true,
+  fallback: true
 )
 
 // ----------------------------------------
 // 2. CONFIGURACIÓN DE PÁGINA
 // ----------------------------------------
 #set page(
-  paper: "a5",          // Tamaño estándar de libro (también puedes usar "a4")
+  paper: "a4",          // Tamaño estándar de libro (también puedes usar "a4")
 
   // Márgenes profesionales para impresión
   margin: (

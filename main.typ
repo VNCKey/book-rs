@@ -1,22 +1,18 @@
-// ========================================
-// MAIN.TYP - Diviértete con Rust
-// ========================================
-
 // Importar configuración
 #import "src/config.typ": *
 
 // ========================================
-// PORTADA (incluir tu portada aquí)
+// PORTADA
 // ========================================
 #include "src/portada.typ"
 
-
+#pagebreak()
 
 
 // Tabla de contenidos
 #outline(
   title: [Contenido],
-  indent: 1em,    // o 2em, según cuánto quieras indentar
+  indent: 1em,
   depth: 3
 )
 

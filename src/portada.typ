@@ -1,15 +1,26 @@
-//-----------PORTADA MEJORADA-----------
+//-----------PORTADA A4-----------
 // Curso de Rust 2026 - Alexander Villanueva
-// Versión optimizada con mejor jerarquía visual
-
-#set page(
-  paper: "a4",
-  margin: 0cm
-)
 
 // ========================================
 // FONDO BASE CON GRADIENTE DINÁMICO
 // ========================================
+//
+#set page(
+  paper: "a4",
+
+
+  margin: (
+    inside: 0cm,
+    outside: 0cm,
+    top: 0cm,
+    bottom: 0cm,
+  ),
+
+
+
+)
+
+
 #place(
   top,
   polygon(
@@ -38,29 +49,29 @@
       angle: 45deg
     ),
     (0pt, 0pt),
-    (8cm, 0pt),
-    (4cm, 15cm),
-    (0pt, 12cm),
+    (10cm, 0pt),
+    (5cm, 18cm),
+    (0pt, 15cm),
   )
 )
 
 // ========================================
 // EDITORIAL "VNCKey"
 // ========================================
-#place(top + left, dx: 2.5cm, dy: 2.5cm)[
+#place(top + left, dx: 3cm, dy: 3cm)[
   #stack(
     dir: ttb,
     spacing: 5pt,
     // Logo editorial
     text(
-      size: 36pt,
+      size: 40pt,
       weight: "black",
       fill: rgb("#FEFFFE"),
 
     )[*VNCKey*],
     // Línea decorativa
     line(
-      length: 4.2cm,
+      length: 5cm,
       stroke: 1.5pt + rgb("#FEFFFE")
     )
   )
@@ -69,7 +80,7 @@
 // ========================================
 // BADGE "RUST PERÚ" - Diseño Premium
 // ========================================
-#place(top + right, dx: -2.5cm, dy: 2.5cm)[
+#place(top + right, dx: -3cm, dy: 3cm)[
   #rect(
     fill: gradient.linear(
       rgb("#FFFFFF"),  // Rojo de la bandera peruana
@@ -89,13 +100,13 @@
 // ========================================
 // TÍTULO PRINCIPAL
 // ========================================
-#place(top + left, dx: 2.5cm, dy: 7cm)[
+#place(top + left, dx: 3cm, dy: 9cm)[
   #block(
     width: 15cm,
     [
       // "Diviértete"
       #text(
-        size: 68pt,
+        size: 72pt,
         weight: "black",
         fill: white,
         font: "Libertinus Serif"
@@ -105,7 +116,7 @@
 
       // "con Rust" con degradado
       #text(
-        size: 68pt,
+        size: 72pt,
         weight: "black",
         fill: gradient.linear(
           rgb("#D55A29"),
@@ -121,12 +132,12 @@
 // ========================================
 // SUBTÍTULO
 // ========================================
-#place(top + left, dx: 2.5cm, dy: 13cm)[
+#place(top + left, dx: 3cm, dy: 16cm)[
   #block(
-    width: 13cm,
+    width: 14cm,
     [
       #set text(
-        size: 22pt,
+        size: 24pt,
         weight: "semibold",
         fill: rgb("#F5A962").lighten(20%),
       )
@@ -138,7 +149,7 @@
 // ========================================
 // ELEMENTOS DECORATIVOS (puntos rust)
 // ========================================
-#place(left + top, dx: 1cm, dy: 15cm)[
+#place(left + top, dx: 1.2cm, dy: 18cm)[
   #stack(
     dir: ttb,
     spacing: 8pt,
@@ -151,36 +162,32 @@
   )
 ]
 
-// ========================================
-// POLÍGONO INFERIOR (más dinámico)
-// ========================================
-
 
 // ========================================
 // MASCOTA FERRIS (cangrejo Rust)
 // ========================================
-#place(bottom + right, dx: -1.5cm, dy: -6cm)[
-  #image("../assets/rustperu.png", width: 10cm)
+#place(bottom + right, dx: -2cm, dy: -7cm)[
+  #image("../assets/rustperu.png", width: 12cm)
 ]
 
 // ========================================
 // BARRA INFERIOR CON INFORMACIÓN
 // ========================================
-#place(bottom, dy: -2cm)[
+#place(bottom, dy: -2.5cm)[
   #rect(
     width: 100%,
-    height: 2cm,
+    height: 2.5cm,
     fill: rgb("#1a1a1a").transparentize(20%),
     stroke: none,
   )[
     #grid(
       columns: (auto, auto),
       align: (left + horizon, right + horizon),
-      inset: (x: 2.5cm, y: 0pt),
+      inset: (x: 3cm, y: 0pt),
 
       // Descripción/Tags
       [
-        #set text(size: 11pt, fill: rgb("#F5A962"), weight: "semibold")
+        #set text(size: 12pt, fill: rgb("#F5A962"), weight: "semibold")
         #box[🦀 Programación de Sistemas]
         #h(1em)
         #box[⚡ Zero-Cost Abstractions]
@@ -191,7 +198,7 @@
       // Autor
       [
         #text(
-          size: 20pt,
+          size: 22pt,
           fill: white,
           weight: "black",
         )[Alexander Villanueva]
@@ -205,10 +212,10 @@
 // ========================================
 
 // Línea decorativa superior derecha
-#place(top + right, dx: -0.5cm, dy: 6cm)[
+#place(top + right, dx: -0.5cm, dy: 8cm)[
   #rotate(-90deg)[
     #line(
-      length: 8cm,
+      length: 10cm,
       stroke: 2pt + gradient.linear(
         rgb("#D55A29"),
         rgb("#D55A29").transparentize(100%)
@@ -218,12 +225,12 @@
 ]
 
 // Círculo decorativo (engranaje conceptual)
-#place(right + horizon, dx: -3cm)[
+#place(right + horizon, dx: -3.5cm)[
   #circle(
-    radius: 0.8cm,
+    radius: 0.9cm,
     stroke: 3pt + rgb("#D55A29").transparentize(60%),
     fill: none
   )
 ]
 
-//-----------FIN DE LA PORTADA--------
+//-----------FIN DE LA PORTADA A4--------
