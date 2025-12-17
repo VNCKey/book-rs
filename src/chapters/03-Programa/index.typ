@@ -815,3 +815,6 @@ fn main() {
       ),
     )
   ) <diag-string-move>
+
+
+  // Falta agregar mas detalles

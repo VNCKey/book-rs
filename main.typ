@@ -56,3 +56,5 @@
 #include "src/chapters/02-Instalacion/index.typ"
 
 #include "src/chapters/03-Programa/index.typ"
+
+#include "src/chapters/04-Variables/index.typ"
