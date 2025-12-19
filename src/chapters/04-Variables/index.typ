@@ -12,6 +12,7 @@
     js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
   ),
   number-format: none,
+  display-icon:false,
   zebra-fill: none,
   stroke: none,
   fill: rgb("#FBFAFB"),  // 👈 Color de fondo general
@@ -41,24 +42,18 @@ necesidad de recolector de basura. Además, el conocimiento completo de los tipo
 altamente optimizado, logrando un rendimiento comparable a C y C++. Finalmente, los tipos aportan claridad y mantenibilidad
 al código, funcionando como documentación implícita y facilitando la evolución de proyectos complejos.
 
-Tipos de Datos en Rust: Escalares y Compuestos
+Tipos de Datos en Rust
 
 En el ecosistema de Rust, todo valor pertenece a un tipo de dato específico.
 Estos se dividen en dos grandes categorías según cómo organizan la información en la memoria: tipos escalares
 y tipos compuestos.
 
-- Scalar Types
-
-  Representan un único valor. En Rust, los principales tipos escalares son los enteros,
-  los números de punto flotante, el tipo booleano y el tipo carácter. Estos tipos son fundamentales y
-  suelen almacenarse directamente en el stack, lo que permite un acceso rápido y eficiente.
-
-- Compound Types
-
-  Los tipos compuestos pueden agrupar múltiples valores en un solo tipo. Son estructuras que
-  permiten organizar datos relacionados bajo una misma identidad.
 
 == Scalar Types
+
+Representan un único valor. En Rust, los principales tipos escalares son los enteros,
+los números de punto flotante, el tipo booleano y el tipo carácter. Estos tipos son fundamentales y
+suelen almacenarse directamente en el stack, lo que permite un acceso rápido y eficiente.
 
 #include "sections/integer_type.typ"
 #include "sections/floating_type.typ"
@@ -67,7 +62,17 @@ y tipos compuestos.
 
 == Compound Types
 
-#include "sections/tuple.typ"
-#include "sections/array.typ"
-#include "sections/vector.typ"
-#include "sections/string.typ"
+En Rust, los tipos compuestos son aquellos que combinan varios valores en una sola unidad de datos.
+
+A diferencia de los tipos escalares, los compuestos pueden agrupar o contener múltiples valores de uno o varios tipos.
+
+Rust tiene dos tipos compuestos principales:
+
+- Tuplas "tuple"
+
+- Arreglos "array"
+
+#include "sections/compound/tuple.typ"
+#include "sections/compound/array.typ"
+// #include "sections/vector.typ"
+// #include "sections/string.typ"
