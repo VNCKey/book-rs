@@ -270,3 +270,41 @@ Lista de libros, documentación, y comunidades recomendadas.
 // ========================================
 
 // Para un libro más largo, puedes agregar un índice al final
+
+
+===== Implicaciones Prácticas
+
+Debido a estas limitaciones de precisión:
+
+1. *Nunca se deben comparar flotantes con `==`* para verificar igualdad exacta:
+
+```rust
+let a = 0.1 + 0.2;
+let b = 0.3;
+
+// Incorrecto:
+if a == b {  // Puede fallar debido a errores de redondeo
+    println!("Son iguales");
+}
+
+// Correcto: comparar con epsilon de tolerancia
+let epsilon = 1e-10;
+if (a - b).abs() < epsilon {
+    println!("Son aproximadamente iguales");
+}
+```
+
+2. *Evitar operaciones que acumulen errores de redondeo* en bucles largos.
+
+3. *Considerar tipos decimales exactos* para aplicaciones financieras donde la precisión decimal es crítica (crates como `rust_decimal`).
+
+
+
+// Constantes matemáticas
+println!("PI: {}", std::f64::consts::PI);
+println!("E (número de Euler): {}", std::f64::consts::E);
+println!("Raíz de 2: {}", std::f64::consts::SQRT_2);
+
+// Epsilon (diferencia mínima representable)
+println!("f32 epsilon: {}", f32::EPSILON);
+println!("f64 epsilon: {}", f64::EPSILON);
