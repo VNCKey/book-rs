@@ -74,5 +74,20 @@ Rust tiene dos tipos compuestos principales:
 
 #include "sections/compound/tuple.typ"
 #include "sections/compound/array.typ"
+
+== Collections
+
+A diferencia de los tipos de datos escalares y compuestos, cuyos
+tamaños son conocidos en tiempo de compilación y que se almacenan generalmente en el stack, las colecciones
+de Rust están diseñadas para manejar datos de tamaño dinámico y utilizan memoria asignada en el heap.
+
+Una colección es una estructura de datos capaz de almacenar múltiples valores, pero, a diferencia de los
+arrays o las tuplas, su contenido puede crecer o reducirse dinámicamente durante la ejecución del programa.
+Esto permite trabajar con cantidades de datos que no se conocen de antemano, como entradas de usuario,
+resultados de cálculos, datos provenientes de archivos o redes.
+
+
+#include "sections/collections/vec.rs"
+
 // #include "sections/vector.typ"
 // #include "sections/string.typ"

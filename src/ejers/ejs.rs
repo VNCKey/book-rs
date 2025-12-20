@@ -22,3 +22,43 @@ fn main() {
 
     println!("{tupla_x:?}");
 }
+
+
+3. Función que Retorna Múltiples Valores
+Escribe una función dividir(dividendo: i32, divisor: i32) que retorne una tupla con:
+
+El cociente
+El residuo
+
+Ejemplo: dividir(17, 5) → (3, 2)
+
+
+
+fn main(){
+    println!("{:?}",dividir(17,5));
+}
+
+fn dividir(dividiendo:i32, divisor: i32) -> (i32,i32){
+
+    let x:i32 = dividiendo / divisor;
+    let y:i32 =  dividiendo % divisor;
+
+    (x,y)
+}
+
+4. Coordenadas 3D
+Crea una tupla que represente un punto 3D (x, y, z). 
+Escribe una función que calcule la distancia desde el origen (0, 0, 0) 
+usando la fórmula: √(x² + y² + z²)
+
+fn main(){
+    println!("{:?}",dividir(17.0,5.0,2.0));
+}
+
+fn dividir(x:f32, y: f32, z:f32) -> f32 {
+    
+    let rs:f32 = x.powi(2) + y.powi(2) + z.powi(2); 
+   
+    rs.sqrt()
+}
+
