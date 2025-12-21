@@ -106,7 +106,7 @@ Cada capítulo está diseñado para construir sobre los anteriores. Te recomiend
 
 = Introducción a Rust
 
-Rust es un lenguaje de programación de sistemas que se enfoca en tres pilares fundamentales: #term[seguridad], #term[velocidad] y #term[concurrencia]. Desarrollado inicialmente por Mozilla, hoy es uno de los lenguajes más amados por la comunidad de desarrolladores.
+Rust es un lenguaje de programación de sistemas que se enfoca en tres pilares fundamentales: seguridad, velocidad y concurrencia. Desarrollado inicialmente por Mozilla, hoy es uno de los lenguajes más amados por la comunidad de desarrolladores.
 
 == ¿Por qué Rust?
 
@@ -119,9 +119,9 @@ Los principales beneficios de Rust incluyen:
 + *Concurrencia sin miedo*: El compilador garantiza que tu código concurrente es seguro.
 + *Excelente tooling*: Cargo, rustfmt, clippy y más herramientas de primera clase.
 
-#warning[
+
   Rust tiene una curva de aprendizaje pronunciada al inicio. El concepto de ownership puede ser confuso, pero una vez lo dominas, todo cobra sentido.
-]
+
 
 == Tu primer programa en Rust
 
@@ -147,9 +147,9 @@ Este simple programa introduce varios conceptos:
 - `println!` es una macro (nota el `!`)
 - Las cadenas de texto van entre comillas dobles
 
-#note[
+
   Las macros en Rust terminan con `!`. Son diferentes de las funciones y se expanden en tiempo de compilación.
-]
+
 
 Compila y ejecuta con:
 
@@ -176,7 +176,7 @@ cargo run
 
 = Variables y mutabilidad
 
-En Rust, las variables son #term[inmutables por defecto]. Esta es una de las decisiones de diseño más importantes del lenguaje.
+En Rust, las variables son inmutables por defecto. Esta es una de las decisiones de diseño más importantes del lenguaje.
 
 ```rust
 fn main() {
@@ -220,7 +220,7 @@ const MAX_POINTS: u32 = 100_000;
 
 = Ownership
 
-El concepto más importante y único de Rust es el #term[ownership] (propiedad). Este sistema es lo que permite a Rust garantizar seguridad de memoria sin un recolector de basura.
+El concepto más importante y único de Rust es el ownership (propiedad). Este sistema es lo que permite a Rust garantizar seguridad de memoria sin un recolector de basura.
 
 == Las reglas del ownership
 
@@ -238,9 +238,7 @@ fn main() {
 }
 ```
 
-#important[
   El concepto de "move" en Rust es fundamental. A diferencia de otros lenguajes, cuando asignas una variable a otra, la primera deja de ser válida.
-]
 
 // ========================================
 // MÁS CAPÍTULOS...

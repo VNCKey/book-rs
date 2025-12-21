@@ -88,6 +88,9 @@ resultados de cálculos, datos provenientes de archivos o redes.
 
 
 #include "sections/collections/vec.rs"
+#include "sections/collections/string.rs"
+#include "sections/collections/hashmap.rs"
+
 
 // #include "sections/vector.typ"
 // #include "sections/string.typ"

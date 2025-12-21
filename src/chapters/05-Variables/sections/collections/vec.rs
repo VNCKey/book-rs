@@ -401,8 +401,8 @@ println!("Segunda parte: {:?}", segunda_parte);  // [4, 5]
 
 Rust distingue entre:
 
-- `len()` → cantidad actual de elementos
-- `capacity()` → espacio reservado en memoria
+- `len()` : cantidad actual de elementos
+- `capacity()` : espacio reservado en memoria
 
 ```rust
 let mut v = Vec::with_capacity(10);
@@ -596,53 +596,6 @@ println!("{:?}", matriz);
 // [[0, 0, 0, 0], [0, 0, 99, 0], [0, 0, 0, 0]]
 ```
 
-#text(14pt)[*Iteración*]
-
-*1. Iterar por valor (consume el vector)*
-
-```rust
-let v = vec![1, 2, 3];
-
-for num in v {
-    println!("{}", num);
-}
-
-// println!("{:?}", v);  // ✗ Error: v fue movido
-```
-
-*2. Iterar por referencia inmutable*
-
-```rust
-let v = vec![1, 2, 3];
-
-for num in &v {
-    println!("{}", num);
-}
-
-println!("{:?}", v);  // ✓ v sigue disponible
-```
-
-*3. Iterar por referencia mutable*
-
-```rust
-let mut v = vec![1, 2, 3];
-
-for num in &mut v {
-    *num *= 2;
-}
-
-println!("{:?}", v);  // [2, 4, 6]
-```
-
-*4. Iterar con índice usando `enumerate()`*
-
-```rust
-let v = vec!["a", "b", "c"];
-
-for (i, valor) in v.iter().enumerate() {
-    println!("v[{}] = {}", i, valor);
-}
-```
 
 #text(14pt)[*Métodos de concatenación*]
 
@@ -713,52 +666,4 @@ let v = vec![1, 2, 3, 4, 5];
 let slice: &[i32] = &v[1..4];
 
 println!("{:?}", slice);  // [2, 3, 4]
-```
-
-#text(14pt)[*Cuándo usar Vec vs Array*]
-
-*Usa `Vec<T>` cuando:*
-- El tamaño no se conoce en tiempo de compilación
-- Necesitas agregar o eliminar elementos dinámicamente
-- Trabajas con colecciones grandes (que no caben en el stack)
-- Necesitas flexibilidad sobre rendimiento
-
-*Usa `[T; N]` cuando:*
-- El tamaño es fijo y conocido
-- Quieres máxima velocidad (stack allocation)
-- Trabajas con colecciones pequeñas (< 1000 elementos)
-- No necesitas modificar el tamaño
-
-#text(14pt)[*Resumen rápido*]
-
-```rust
-// Creación
-let v1 = vec![1, 2, 3];
-let v2 = Vec::new();
-let v3 = vec![0; 5];
-
-// Agregar/Eliminar
-v.push(4);
-v.pop();
-v.insert(1, 99);
-v.remove(0);
-v.clear();
-
-// Acceso
-let x = v[0];
-let y = v.get(1);  // Option<&T>
-
-// Capacidad
-v.len();
-v.capacity();
-v.is_empty();
-
-// Ordenar/Buscar
-v.sort();
-v.reverse();
-v.contains(&5);
-
-// Iteración
-for x in &v { }
-for x in &mut v { }
 ```

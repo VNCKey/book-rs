@@ -184,6 +184,12 @@ edition = "2021"
 # Ejmplos
 # rand = "0.8.5" Permite generar números aleatorios
 # serde = "1.0.130" Permite serializar y deserializar datos
+
+[dev-dependencies]
+# Dependencias solo para desarrollo/testing
+
+[build-dependencies]
+# Dependencias para scripts de build
 ```
 
 Punto de entrada: main.rs

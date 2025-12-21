@@ -42,7 +42,7 @@
 #import "src/utils/tables.typ": apply-rust-style
 
 #show: apply-rust-style
-= Primeros pasos
+= Introducción a Rust
 
 #v(1em)
 
@@ -51,6 +51,8 @@
 
 #include "src/chapters/02-Instalacion/index.typ"
 
-#include "src/chapters/03-Programa/index.typ"
+#include "src/chapters/03-rustc_cargo/index.typ"
 
-#include "src/chapters/04-Variables/index.typ"
+#include "src/chapters/04-Programa/index.typ"
+
+#include "src/chapters/05-Variables/index.typ"
