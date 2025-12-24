@@ -56,3 +56,7 @@
 #include "src/chapters/04-Programa/index.typ"
 
 #include "src/chapters/05-Variables/index.typ"
+
+#include "src/chapters/06-Controlflow/index.typ"
+
+#include "src/chapters/07-iteradores/index.typ"

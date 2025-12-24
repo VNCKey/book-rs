@@ -1,4 +1,4 @@
-== Arrays
+=== Arrays
 
 Un array en Rust es una colección de tamaño fijo de valores del mismo tipo.
 

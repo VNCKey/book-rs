@@ -1,4 +1,4 @@
-== Tuplas
+=== Tuplas
 
 En Rust, una tupla es un tipo compuesto que permite agrupar varios valores dentro de un único contenedor. Su tamaño es fijo: una vez creada, no puede crecer ni reducirse.
 
