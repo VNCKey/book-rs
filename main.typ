@@ -1,5 +1,6 @@
-// Importar configuración
+
 #import "src/config.typ": *
+#show: setup-document
 
 // ========================================
 // PORTADA
@@ -42,9 +43,13 @@
 #import "src/utils/tables.typ": apply-rust-style
 
 #show: apply-rust-style
+
+
 = Introducción a Rust
 
 #v(1em)
+
+
 
 
 #include "src/chapters/01-Intro/index.typ"

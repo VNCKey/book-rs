@@ -5,10 +5,10 @@
 // ----------------------------------------
 // 1. FUENTES
 // ----------------------------------------
-#let crimson = "Crimson Pro"
+//#let crimson = "Crimson Pro"
 
 #set text(
-  font: crimson,
+  //font: crimson,
   size: 12pt,
   lang: "es",
   hyphenate: true,
@@ -32,28 +32,10 @@
   // Numeración de páginas
   numbering: "1",
   number-align: center + bottom,
-
-  // Header/Footer (opcional, descomenta si quieres)
-  /*
-  header: locate(loc => {
-    let page-num = counter(page).at(loc).first()
-    if page-num > 1 [  // No mostrar en portada
-      #set text(size: 9pt, fill: gray)
-      #grid(
-        columns: (1fr, 1fr),
-        align: (left, right),
-        [Diviértete con Rust],
-        [Capítulo #counter(heading).display()]
-      )
-      #v(-0.7em)
-      #line(length: 100%, stroke: 0.5pt + gray)
-    ]
-  }),
-  */
 )
 
 // ----------------------------------------
-// 3. CONFIGURACIÓN DE DOCUMENTO (Metadatos)
+// 3. CONFIGURACIÓN DE DOCUMENTO
 // ----------------------------------------
 #set document(
   title: "Diviértete con Rust",
@@ -73,13 +55,13 @@
 )
 
 // ----------------------------------------
-// 5. CONFIGURACIÓN DE TÍTULOS (HEADINGS)
+// 5. CONFIGURACIÓN DE TÍTULOS
 // ----------------------------------------
 
 // Numeración de capítulos y secciones
 #set heading(numbering: "1.1")
 
-// ⭐ Capítulos (Nivel 1) - Página nueva
+// ?
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)   // Nueva página para cada capítulo
   v(3cm)                  // Espacio arriba
@@ -116,7 +98,7 @@
   v(0.5em)
 }
 
-// ⭐ IMPORTANTE: Quitar sangría después de títulos
+// IMPORTANTE: Quitar sangría después de títulos
 #show heading: it => {
   it
   par(first-line-indent: 0pt)[#text(size: 0pt)[.]]
@@ -208,69 +190,7 @@
   text(fill: rgb("#CE422B"), weight: "semibold", content)
 }
 
-// Función para notas/tips
-#let note(title: "Nota", content) = {
-  block(
-    width: 100%,
-    fill: rgb("#e8f4f8"),
-    stroke: (left: 3pt + rgb("#0066cc")),
-    inset: 10pt,
-    radius: 2pt,
-    [
-      *#title:* #content
-    ]
-  )
-}
 
-// Función para advertencias
-#let warning(content) = {
-  block(
-    width: 100%,
-    fill: rgb("#fff4e5"),
-    stroke: (left: 3pt + rgb("#ff9800")),
-    inset: 10pt,
-    radius: 2pt,
-    [
-      *⚠️ Advertencia:* #content
-    ]
-  )
-}
-
-// Función para ejemplos importantes
-#let important(content) = {
-  block(
-    width: 100%,
-    fill: gradient.linear(
-      rgb("#eff6ff"),
-      rgb("#dbeafe"),
-      angle: 135deg
-    ),
-    stroke: none,
-    inset: 0pt,
-    radius: 0pt,
-    [
-      #block(
-        width: 100%,
-        fill: rgb("#3b82f6"),
-        inset: (x: 14pt, y: 8pt),
-        text(
-          size: 9pt,
-          weight: 700,
-          fill: white,
-        )[⚡ IMPORTANTE]
-      )
-      #block(
-        width: 100%,
-        inset: 14pt,
-        text(
-          size: 10pt,
-          fill: rgb("#1e40af"),
-          weight: 400
-        )[#content]
-      )
-    ]
-  )
-}
 
 // ----------------------------------------
 // 14. CONTROL DE VIUDAS Y HUÉRFANAS
@@ -288,14 +208,52 @@
 // FIN DE CONFIGURACIÓN
 // ----------------------------------------
 
-// Nota: Importa este archivo al inicio de tu main.typ con:
-// #import "src/config.typ": *
-
-
-
-
 #show table: set table(
   stroke: (paint: rgb("#ff6b35"), thickness: 1pt),
   fill: (x, y) => if y == 0 { rgb("#ff6b35").lighten(85%) } else if calc.odd(y) { rgb("#fff5f0") } else { white },
   inset: 8pt,
 )
+
+
+
+
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.1": *
+
+// Función que aplica TODA la configuración
+#let setup-document(doc) = {
+  // Inicializar Codly
+  show: codly-init.with()
+
+  codly(
+    languages: (
+      rust: (name: "Rust", icon: "🦀", color: rgb("#FFD8C9")),
+      bash: (name: "Terminal", icon: "🐧", color: rgb("#E2E2E2")),
+      yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
+      toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),
+      py: (name: "Python", icon: "🐍", color: rgb("#C7FFFA")),
+      js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
+    ),
+    number-format: none,
+    zebra-fill: none,
+    stroke: none,
+    fill: rgb("#FBFAFB"),
+  )
+
+  // Estilos inline
+  show raw.where(block: false): it => box(
+    fill: rgb("#F5F5F5"),
+    inset: (x: 4pt, y: 2pt),
+    outset: (y: 2pt),
+    radius: 2pt,
+    text(
+      fill: rgb("#D73A49"),
+      size: 0.95em,
+      it
+    )
+  )
+
+  doc
+}
+
+#let term(content) = text(weight: "bold", content)

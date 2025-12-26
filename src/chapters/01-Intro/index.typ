@@ -1,5 +1,3 @@
-#import "../../config.typ": term
-
 == ¿Qué es Rust?
 
 Rust es un lenguaje de sistemas moderno, diseñado para garantizar seguridad de
@@ -9,8 +7,8 @@ Su desarrollo comenzó en 2006 por Graydon Hoare y fue patrocinado por Mozilla,
 culminando con su primera versión estable en mayo de 2015.
 
 Rust resuelve problemas clásicos de lenguajes de bajo nivel como punteros nulos,
-doble liberación  y condiciones de carrera #term[data races], mediante un sistema de propiedad #term[Ownership]
-y un verificador de préstamos #term[Borrowing] que el compilador valida en tiempo de compilación.
+doble liberación  y condiciones de carrera data races, mediante un sistema de propiedad Ownership
+y un verificador de préstamos Borrowing que el compilador valida en tiempo de compilación.
 
 Rust no solo permite crear aplicaciones completas desde cero, puesto
 que su diseño de abstractions y memory safety lo convierte en una opción

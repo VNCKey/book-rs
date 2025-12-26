@@ -1,26 +1,8 @@
-#import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.1": *
-#show: codly-init.with()
-#import "../../config.typ": term
 
-#codly(
-  languages: (
-    rust: (name: "Rust", icon: "🦀", color: rgb("#FFD8C9")),
-    bash: (name: "Terminal", icon: "🐧", color: rgb("#E2E2E2")),
-    yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
-    toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),
-    py: (name: "Python", icon: "🐍", color: rgb("#C7FFFA")),
-    js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
-  ),
-  number-format: none,
-  zebra-fill: none,
-  stroke: none,
-  fill: rgb("#FBFAFB"),
-)
 
 == Instalación de Rust
 
-Rust se instala mediante #term[rustup], el instalador oficial que gestiona versiones del compilador y herramientas asociadas.
+Rust se instala mediante rustup, el instalador oficial que gestiona versiones del compilador y herramientas asociadas.
 
 === Linux y macOS
 
@@ -62,7 +44,7 @@ Descarga desde: https://www.rust-lang.org/tools/install
 
 Selecciona el instalador según tu arquitectura (32-bit, x64, o ARM64).
 
-Ejecuta #term[rustup-init.exe] y presiona Enter para instalación estándar.
+Ejecuta rustup-init.exe y presiona Enter para instalación estándar.
 
 Reinicia tu terminal después de la instalación.
 

@@ -59,7 +59,7 @@ más simples del lenguaje y cubren los datos más comunes como los números ente
 valores booleanos y caracteres.
 
 Rust es estricto con los tipos escalares, ya que cada uno tiene un tamaño definido por defecto, pero también te
-permite elegir variantes con tamaños explícitos según tus necesidades.
+permite elegir variantes con tamaños explícitos según las necesidades.
 
 #include "sections/scalar_type/integer.typ"
 #include "sections/scalar_type/floating.typ"

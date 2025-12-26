@@ -1,18 +1,22 @@
+
+
+
 === Enteros
 
-Los enteros son tipos de datos numéricos que representan valores sin componente fraccionaria. En Rust,
-los tipos enteros están diseñados para ser explícitos tanto en su tamaño como en su signo, proporcionando
+Los enteros son tipos de datos numéricos que representan valores sin parte decimal. Están diseñados
+para ser explícitos tanto en su tamaño como en su signo, proporcionando
 un control preciso sobre el uso de memoria y garantizando un comportamiento predecible del programa.
 
-==== Clasificación de los Enteros
+Clasificación de los Enteros
 
-Rust organiza los tipos enteros en dos categorías principales según su capacidad para representar números negativos:
+Rust organiza los tipos enteros en dos categorías principales según cual se adapte a las necesidades
+en términos de rango de valores y consumo de memoria.
 
-===== Enteros con Signo (`i`)
+===== Enteros con Signo
 
-Los enteros con signo pueden representar valores positivos, negativos y cero. Utilizan el
-sistema de complemento a dos para la representación de números negativos, donde el bit más significativo
-indica el signo del número.
+Los enteros con signo son aquellos tipos enteros que pueden representar tanto valores
+positivos como negativos, además del cero. En Rust, se identifican por el prefijo #raw("i",lang:"rust")
+seguido del número de bits: i8, i16, i32, i64 y i128.
 
 #figure(
   table(
