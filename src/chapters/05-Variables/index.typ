@@ -20,45 +20,51 @@
 
 = Tipos de datos
 
-En Rust, un tipo de dato define la naturaleza de la información que una variable puede almacenar y
-las operaciones que se pueden realizar sobre dicha información. El sistema de tipos de Rust es estático
-y fuertemente tipado, lo que significa que el compilador conoce el tipo de cada valor en tiempo de compilación y
-no permite operaciones entre tipos incompatibles sin una conversión explícita.
+Los tipos de datos son uno de los pilares fundamentales de cualquier lenguaje de programación,
+y Rust no es la excepción. En esencia, un tipo de dato define qué clase de información puede
+almacenar una variable o una expresión, así como las operaciones que se pueden realizar sobre ella.
 
-Por ejemplo, una variable declarada como #raw("i32",lang:"rust") solo puede almacenar números enteros de 32 bits con signo, y
-no puede ser utilizada directamente como una cadena de texto o un número de punto flotante:
+Rust, al ser un lenguaje con tipado estático, requiere que el compilador conozca el tipo de cada valor
+en tiempo de compilación. Esto significa que los tipos se verifican antes de que el programa se ejecute,
+lo que permite detectar muchos errores potenciales de manera temprana.
 
-```rust
-let numero: i32 = 10;
-// let texto: String = numero; // Error: tipos incompatibles
-```
-Importancia del sistema de tipos en Rust
+¿Por qué son tan importantes los tipos en Rust?
 
-El sistema de tipos de Rust es el eje central que sustenta la seguridad, el rendimiento y la confiabilidad del
-lenguaje. Gracias a verificaciones exhaustivas en tiempo de compilación, Rust previene errores comunes como
-incompatibilidades de tipos, accesos inválidos a memoria y condiciones de carrera, evitando fallos en tiempo de ejecución.
-Este sistema se integra con los conceptos de ownership, borrowing y lifetimes para garantizar seguridad de memoria sin
-necesidad de recolector de basura. Además, el conocimiento completo de los tipos permite al compilador generar código
-altamente optimizado, logrando un rendimiento comparable a C y C++. Finalmente, los tipos aportan claridad y mantenibilidad
-al código, funcionando como documentación implícita y facilitando la evolución de proyectos complejos.
+La respuesta radica en sus principios del lenguaje mismo.
 
-Tipos de Datos en Rust
+- Seguridad de memoria y de tipos: Rust utiliza su sistema de tipos para prevenir clases enteras
+  de errores comunes en otros lenguajes, como el acceso a memoria no inicializada, desbordamientos de
+  búfer o el uso incorrecto de valores nulos. Gracias al tipo estricto, el compilador puede garantizar
+  que tu código no realice operaciones inválidas sin necesidad de un recolector de basura o de verificaciones
+  en tiempo de ejecución costosas.
 
-En el ecosistema de Rust, todo valor pertenece a un tipo de dato específico.
-Estos se dividen en dos grandes categorías según cómo organizan la información en la memoria: tipos escalares
-y tipos compuestos.
+- Rendimiento: Al conocer los tipos en tiempo de compilación, Rust puede optimizar el código generado de forma
+  muy eficiente. Cada tipo tiene un tamaño y un alineamiento conocidos, lo que permite al compilador generar
+  código máquina cercano al que escribirías en C o C++, pero con muchas más garantías de seguridad.
+
+- Legibilidad y mantenibilidad: Al declarar explícitamente los tipos,
+  el código estara mejor documentado y entender rápidamente
+  qué tipo de datos se está manipulando y qué comportamiento se espera.
+
+En Rust, los tipos se dividen en categorías:
+
+- Tipos escalares "scalar types", en esta categoria representa un único valor.
+- Tipos compuestos "compound types", pueden agrupar múltiples valores en una sola estructura.
 
 
 == Scalar Types
 
-Representan un único valor. En Rust, los principales tipos escalares son los enteros,
-los números de punto flotante, el tipo booleano y el tipo carácter. Estos tipos son fundamentales y
-suelen almacenarse directamente en el stack, lo que permite un acceso rápido y eficiente.
+Los tipos escalares en Rust representan un único valor básico. Son los bloques de construcción
+más simples del lenguaje y cubren los datos más comunes como los números enteros, números de punto flotante,
+valores booleanos y caracteres.
 
-#include "sections/integer_type.typ"
-#include "sections/floating_type.typ"
-#include "sections/boolean_type.typ"
-#include "sections/char.typ"
+Rust es estricto con los tipos escalares, ya que cada uno tiene un tamaño definido por defecto, pero también te
+permite elegir variantes con tamaños explícitos según tus necesidades.
+
+#include "sections/scalar_type/integer.typ"
+#include "sections/scalar_type/floating.typ"
+#include "sections/scalar_type/boolean.typ"
+#include "sections/scalar_type/char.typ"
 
 == Compound Types
 
@@ -72,8 +78,8 @@ Rust tiene dos tipos compuestos principales:
 
 - Arreglos "array"
 
-#include "sections/compound/tuple.typ"
-#include "sections/compound/array.typ"
+#include "sections/compount_type/tuple.typ"
+#include "sections/compount_type/array.typ"
 
 == Collections
 
