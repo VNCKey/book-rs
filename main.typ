@@ -60,3 +60,11 @@
 #include "src/chapters/06-Controlflow/index.typ"
 
 #include "src/chapters/07-iteradores/index.typ"
+
+#include "src/chapters/08-funciones/index.typ"
+
+#include "src/chapters/09-struct/index.typ"
+
+#include "src/chapters/10-enums/index.typ"
+
+#include "src/chapters/11-generic/index.typ"
