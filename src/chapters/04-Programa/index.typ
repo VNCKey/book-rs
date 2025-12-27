@@ -1,52 +1,9 @@
-#import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.1": *
-#show: codly-init.with()
-
-#codly(
-  languages: (
-    rust: (name: "Rust", icon: "🦀", color: rgb("#FFD8C9")),
-    bash: (name: "Terminal", icon: "🐧", color: rgb("#E2E2E2")),
-    yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
-    toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),
-    py: (name: "Python", icon: "🐍", color: rgb("#C7FFFA")),
-    js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
-  ),
-  number-format: none,
-  zebra-fill: none,
-  stroke: none,
-  fill: rgb("#FBFAFB"),  // 👈 Color de fondo general
-)
-
-
-
-#import "../../config.typ": term
-
-== Compilación y Ejecución en Rust
-
-La ejecución de código en Rust puede realizarse mediante dos vías fundamentales:
-- Compilador directo, rustc, para tareas sencillas.
-- Cargo la herramienta estándar de gestión de proyectos, indispensable para el desarrollo moderno.
-
-=== Usando rustc
-
-rustc es el compilador oficial de Rust. Es el programa que transforma
-tu código fuente (archivos .rs) en ejecutables que tu computadora puede ejecutar.
-
-Entender #term[rustc] te ayuda a comprender mejor lo que sucede "bajo el capó".
-
-Imagina que escribes una receta en español, pero tu horno solo entiende instrucciones
-en lenguaje de máquina. El compilador #term[rustc] es el traductor que convierte tu
-receta #term[código Rust] en instrucciones que el horno #term[CPU] puede ejecutar.
-
-Proceso de Compilación
-
-#include "../../utils/diagrama_rustc.typ"
 
 Fases del Proceso
 
 + Paso 1: Creación del Módulo Fuente
 
-  Todo comienza con el código fuente, que tradicionalmente lleva la extensión #term[.rs].
+  Todo comienza con el código fuente, que tradicionalmente lleva la extensión `.rs`.
   #codly(
     highlights : (
       (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"), tag: "A"),
@@ -59,14 +16,7 @@ Fases del Proceso
   }
   ```
 
-  - A:
 
-    Define la función principal y obligatoria de un programa ejecutable en Rust.
-
-  - B:
-
-    Es un nombre reservado y especial que el compilador de Rust y el sistema operativo
-    buscan para saber dónde empezar a ejecutar el código.
 
 + Paso 2: Compilación
 
@@ -265,12 +215,12 @@ fn main() {
 }
 ```
 
-+ A: La palabra reservada #term[let] se usa para declarar variables inmutables
++ A: La palabra reservada let se usa para declarar variables inmutables
   por defecto
 
-+ B: Nombre de la variable #term[edad]
++ B: Nombre de la variable edad
 
-+ C: Asignación de tipo de valor entero #term[25]
++ C: Asignación de tipo de valor entero 25
 
 ```yaml
 Mi edad es 25
@@ -313,14 +263,14 @@ For more information about this error, try `rustc --explain E0384`.
 
   Este es el identificador único y universal del problema.
 
-  Con documentacion #term[https://doc.rust-lang.org/error_codes/error-index.html]
+  Con documentacion https://doc.rust-lang.org/error_codes/error-index.html
   exacta para el tipo de error y explicacion detallada de ese problema.
 
 
 variables mutables
 
 Si necesitas cambiar el valor de una variable, debes declararla
-explícitamente como mutable usando #term[let mut].
+explícitamente como mutable usando let mut.
 
 #codly(
   highlights : (
@@ -337,7 +287,7 @@ fn main() {
 }
 ```
 
-+ A: La palabra reservada #term[let mut] se usa para declarar variables mutables que
++ A: La palabra reservada let mut se usa para declarar variables mutables que
   cambian su valor a lo largo del programa.
 
 Shadowing
@@ -414,9 +364,9 @@ fn main() {
 ```
 - A:
 
-  - La variable #term[x] y #term[y] son válidas dentro del scope en el que fueron declaradas.
+  - La variable x y y son válidas dentro del scope en el que fueron declaradas.
 
-  - Terminado el scope, las variables #term[x] y #term[y] son liberadas.
+  - Terminado el scope, las variables x y y son liberadas.
 
   - Ya no se pueden usar fuera del scope en el que fueron declaradas.
 
@@ -456,11 +406,11 @@ fn main() {
 
 + A:
 
-  Las constantes siempre usan #term[SCREAMING_SNAKE_CASE].
+  Las constantes siempre usan SCREAMING_SNAKE_CASE.
 
 + B:
 
-  El tipo debe ser explícito #term[:f64] en este caso flotante.
+  El tipo debe ser explícito :f64 en este caso flotante.
 
 + C:
 
@@ -499,7 +449,7 @@ fn main() {
 
 + A:
 
-  Declaramos un valor estatico con #term[static]
+  Declaramos un valor estatico con static
 
 + B
 
@@ -516,7 +466,7 @@ Protocolo v2
 Statements & Expressions
 
 Una sentencia es una instrucción que realiza una acción y no devuelve un valor.
-En Rust, la mayoría de las sentencias terminan con un punto y coma #term[;].
+En Rust, la mayoría de las sentencias terminan con un punto y coma ;.
 
 Una expresión es cualquier pieza de código que se evalúa y devuelve un valor.
 
@@ -552,14 +502,14 @@ fn main() {
 + B:
 
   - Tenemos la segunda Sentencia (statement)
-    La sentencia #term[let] realiza la acción de vincular un valor a un nombre y nunca
+    La sentencia let realiza la acción de vincular un valor a un nombre y nunca
     devuelve un valor, Rust evita side-effect oculto.
 
     #raw("let y = (let x = 5); ERROR!!!!",lang:"rust")
 
     Ejemplos:
 
-    #term[Javascript]```js
+    Javascript```js
     let x = 1;
     let y = (x = 2, x++);   // y = 2; x = 3
     console.log(y, x);      // 2 3 = side-effect dentro de la expresión
@@ -567,25 +517,25 @@ fn main() {
     if (count = 0) { }   // 0 es falsy = nunca entra, pero *asigna*
     ```
 
-    #term[Python]```py
+    Python```py
     b = 5
     a = (b := 1) + (b := 2)   # a = 2
     print("Valor de a es: ",a) #Valor de a es: 3
     print("Valor de b es: ",b) #Valor de b es: 2
     ```
 
-  - Rust prohíbe que #term[let] devuelva valor y así evita bugs
+  - Rust prohíbe que let devuelva valor y así evita bugs
     clásicos como #raw("if (x = 5)",lang:"rust").
 
-  - #raw("println!",lang:"rust") devuelve #term[unit type ()],
+  - #raw("println!",lang:"rust") devuelve unit type (),
     y la llamada como declaración.
 
-  - Rust prohíbe que #term[let] sea una expresión para eliminar una
+  - Rust prohíbe que let sea una expresión para eliminar una
     clase entera de errores que sí existen en lenguajes donde
     la asignación devuelve valor.
 
   - La regla de oro en Rust es que la mayoría de las sentencias
-    terminan con un #term[;] .
+    terminan con un ; .
 
 + C:
 
@@ -604,7 +554,7 @@ fn main() {
 ```yaml
 y = 4
 ```
-En caso de poner #term[;] al final se convierte en una sentencia
+En caso de poner ; al final se convierte en una sentencia
 (statement) y devuleve un unit type ().
 #codly(
   highlights : (

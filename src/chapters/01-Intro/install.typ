@@ -4,7 +4,7 @@
 
 Rust se instala mediante rustup, el instalador oficial que gestiona versiones del compilador y herramientas asociadas.
 
-=== Linux y macOS
+Linux y macOS
 
 Ejecuta en tu terminal:
 
@@ -24,7 +24,7 @@ Presiona Enter para la instalación estándar. Luego reinicia tu terminal o ejec
 source $HOME/.cargo/env
 ```
 
-=== Windows
+Windows
 
 *Requisito previo:* Visual Studio Build Tools con MSVC
 
@@ -32,23 +32,23 @@ source $HOME/.cargo/env
 
 Descarga desde: https://visualstudio.microsoft.com/es/downloads/
 
-Selecciona uno de estos:
+Tienes 2 Opciones:
 - *Opción completa:* Workload "Desktop Development with C++"
 - *Opción mínima:* En "Componentes individuales" selecciona:
   - MSVC v143 – VS 2022 C++ x64/x86 build tools
-  - Windows 11 SDK (10.0.22621.0)
+  - Windows 11 SDK
 
 *Paso 2: Instalar Rust*
 
 Descarga desde: https://www.rust-lang.org/tools/install
 
-Selecciona el instalador según tu arquitectura (32-bit, x64, o ARM64).
+Selecciona el instalador según tu arquitectura `32-bit`, `x64`, o `ARM64`.
 
-Ejecuta rustup-init.exe y presiona Enter para instalación estándar.
+- Ejecuta *rustup-init.exe* y presiona Enter para instalación estándar.
 
-Reinicia tu terminal después de la instalación.
+- Reinicia tu terminal después de la instalación.
 
-=== Verificación
+Verificación
 
 Confirma que la instalación fue exitosa:
 

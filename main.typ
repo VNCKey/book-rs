@@ -54,10 +54,6 @@
 
 #include "src/chapters/01-Intro/index.typ"
 
-#include "src/chapters/02-Instalacion/index.typ"
-
-#include "src/chapters/03-rustc_cargo/index.typ"
-
 #include "src/chapters/04-Programa/index.typ"
 
 #include "src/chapters/05-Variables/index.typ"

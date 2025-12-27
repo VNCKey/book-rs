@@ -26,7 +26,7 @@
     edge-corner-radius: 5pt,
     mark-scale: 80%,
 
-    blob((0,0), text(size: 10pt, [Código\ Fuente `.rs`]), tint: rust-orange),
+    blob((0,0), text(size: 10pt, [Código\ Fuente]), tint: rust-orange),
     edge("-|>", label: [compilar]),
     blob((1,0), [rustc], tint: rust-blue, width: 25mm),
     edge("-|>", label: [genera]),
