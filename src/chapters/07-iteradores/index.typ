@@ -649,3 +649,6 @@ let v = vec![1, 2, 3];
 let it = v.iter().map(|x| x * 10); // aún no se ejecuta
 println!("{}", it.sum::<i32>());   // se ejecuta aquí
 ```
+
+
+Detallar los iteradores con javascript!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
