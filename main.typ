@@ -69,3 +69,9 @@
 #include "src/chapters/10-enums/index.typ"
 
 #include "src/chapters/11-generic/index.typ"
+
+#include "src/chapters/12-traits/index.typ"
+
+#include "src/chapters/13-Life_Times/index.typ"
+
+#include "src/chapters/14-Manejo_Errores/index.typ"
