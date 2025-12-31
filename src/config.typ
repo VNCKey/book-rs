@@ -227,7 +227,6 @@
 
   codly(
     languages: (
-      rust: (name: "Rust", icon: "🦀", color: rgb("#FFD8C9")),
       bash: (name: "bash", icon: "🐧", color: rgb("#E2E2E2")),
       yaml: (name: "Output", icon: "📝", color: rgb("#D6FFCB")),
       toml: (name: "toml", icon: "⚙️", color: rgb("#C7FFFA")),

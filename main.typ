@@ -1,4 +1,8 @@
-
+```rust
+fn main() {
+    println!("Compilador directo rustc"); //Archivo: main.rs
+}
+```
 #import "src/config.typ": *
 #show: setup-document
 

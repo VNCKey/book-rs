@@ -37,15 +37,17 @@ Todo comienza con el código fuente `main.rs`:
 
 #codly(
   highlights : (
-    (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"), ),
-    (line:1, start: 4,end: 9,fill: rgb("#C7FFFA"),),
+    (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"),),
+    (line:1, start: 4,end: 9,fill: rgb("#C7FFFA")),
   ),
 )
 ```rust
 fn main() {
-    println!("Compilador directo rustc."); //Archivo: main.rs
+    println!("Compilador directo rustc"); //Archivo: main.rs
 }
 ```
+
+
 
 - `fn`: Define la función principal y obligatoria de un programa ejecutable en Rust.
 
