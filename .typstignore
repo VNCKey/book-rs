@@ -1,3 +1,5 @@
-# .typstignore
-src/**/*.typ
-chapters/**/*.typ
+src/contents/
+src/borradores/
+src/ejers/
+borrador.typ
+**/_*.typ

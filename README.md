@@ -133,7 +133,7 @@ typst watch main.typ
 ```
 o
 ```bash
-ypst watch main.typ output/main.pdf
+typst watch main.typ output/main.pdf
 ```
 
 **Opción 3: En Zed**

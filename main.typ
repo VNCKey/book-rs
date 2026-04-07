@@ -1,26 +1,28 @@
-```rust
-fn main() {
-    println!("Compilador directo rustc"); //Archivo: main.rs
-}
-```
-#import "src/config.typ": *
-#show: setup-document
+// #import "src/config.typ": *
+// #show: setup-document
 
 // ========================================
 // PORTADA
 // ========================================
-#include "src/portada.typ"
+// #include "src/portada.typ"
 
+#include "portada.typ"
 #pagebreak()
 
 
-// Tabla de contenidos
-#outline(
-  title: [Contenido],
-  indent: 1em,
-  depth: 3
-)
 
+// Config Global
+#import "/src/config/global.typ": *
+#show: template
+
+// Tabla de contenidos
+// #outline(
+//   title: [Contenido],
+//   indent: 1em,
+//   depth: 3,
+// )
+
+#outline()
 #pagebreak()
 
 // ========================================
@@ -28,56 +30,55 @@ fn main() {
 // ========================================
 
 // Header solo en páginas de contenido
-#set page(
-  header: [
-    #set text(size: 9pt, fill: gray)
-    #grid(
-      columns: (1fr, 1fr),
-      align: (left, right),
-      [Diviértete con Rust 🦀],
-      context [Capítulo #counter(heading).display()]
-    )
-    #v(-0.7em)
-    #line(length: 100%, stroke: 0.5pt + gray)
-  ]
-)
+// #set page(
+//   header: [
+//     #set text(size: 9pt, fill: gray)
+//     #grid(
+//       columns: (1fr, 1fr),
+//       align: (left, right),
+//       [Diviértete con Rust 🦀], context [Capítulo #counter(heading).display()],
+//     )
+//     #v(-0.7em)
+//     #line(length: 100%, stroke: 0.5pt + gray)
+//   ],
+// )
 // ========================================
 // CAPÍTULO 1: PRIMEROS PASOS
 // ========================================
-#import "src/utils/tables.typ": apply-rust-style
+// #import "src/utils/tables.typ": apply-rust-style
 
-#show: apply-rust-style
-
-
-= Introducción a Rust
-
-#v(1em)
+// #show: apply-rust-style
 
 
+// = Introducción a Rust
+
+// #v(1em)
 
 
-#include "src/chapters/01-Intro/index.typ"
+#include "/src/contents/_intro.typ"
 
-#include "src/chapters/04-Programa/index.typ"
+// #include "src/chapters/01-Intro/index.typ"
 
-#include "src/chapters/05-Variables/index.typ"
+// #include "src/chapters/04-Programa/index.typ"
 
-#include "src/chapters/06-Controlflow/index.typ"
+// #include "src/chapters/05-Variables/index.typ"
 
-#include "src/chapters/07-iteradores/index.typ"
+// #include "src/chapters/06-Controlflow/index.typ"
 
-#include "src/chapters/08-funciones/index.typ"
+// #include "src/chapters/07-iteradores/index.typ"
 
-#include "src/chapters/09-struct/index.typ"
+// #include "src/chapters/08-funciones/index.typ"
 
-#include "src/chapters/10-enums/index.typ"
+// #include "src/chapters/09-struct/index.typ"
 
-#include "src/chapters/11-generic/index.typ"
+// #include "src/chapters/10-enums/index.typ"
 
-#include "src/chapters/12-traits/index.typ"
+// #include "src/chapters/11-generic/index.typ"
 
-#include "src/chapters/13-Life_Times/index.typ"
+// #include "src/chapters/12-traits/index.typ"
 
-#include "src/chapters/14-Manejo_Errores/index.typ"
+// #include "src/chapters/13-Life_Times/index.typ"
 
-#include "src/chapters/15-Modularidad/index.typ"
+// #include "src/chapters/14-Manejo_Errores/index.typ"
+
+// #include "src/chapters/15-Modularidad/index.typ"

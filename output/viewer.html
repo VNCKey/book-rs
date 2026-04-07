@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diviértete con Rust</title>
+    <meta charset="utf-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            background: #4a4a4a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: auto;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
+        }
+        canvas {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            background: white;
+            max-width: 100%;
+        }
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        #controls button {
+            background: #ff6b35;
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #controls button:hover { background: #e55a25; }
+        #status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: #0f0;
+            padding: 5px 10px;
+            font-family: monospace;
+            font-size: 12px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #status.show { opacity: 1; }
+        #loading {
+            color: white;
+            font-size: 18px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Cargando PDF...</div>
+    <div id="container"></div>
+    <div id="controls" style="display:none;">
+        <button onclick="prevPage()">◀</button>
+        <span id="pageInfo">Página 1</span>
+        <button onclick="nextPage()">▶</button>
+        <span style="margin-left:20px;color:#888">Ctrl+↑↓ para cambiar página</span>
+    </div>
+    <div id="status"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        let pdfDoc = null;
+        let currentPage = 1;
+        let savedScrollY = 0;
+        let lastMod = 0;
+        let pages = [];
+
+        async function loadPDF() {
+            try {
+                pages = [];
+                document.getElementById('container').innerHTML = '';
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('controls').style.display = 'none';
+
+                const response = await fetch('libro.pdf?t=' + Date.now());
+                const data = await response.arrayBuffer();
+                pdfDoc = await pdfjsLib.getDocument({ data }).promise;
+
+                document.title = 'Libro Rust';
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('controls').style.display = 'flex';
+
+                // Render all pages
+                for (let i = 1; i <= pdfDoc.numPages; i++) {
+                    await renderPage(i);
+                }
+
+                lastMod = new Date(response.headers.get('Last-Modified') || Date.now()).getTime();
+                showStatus('PDF cargado: ' + pdfDoc.numPages + ' páginas');
+            } catch (e) {
+                console.error('Error:', e);
+                document.getElementById('loading').textContent = 'Error cargando PDF';
+            }
+        }
+
+        async function renderPage(num) {
+            const page = await pdfDoc.getPage(num);
+            const scale = 1.2;
+            const viewport = page.getViewport({ scale });
+
+            const canvas = document.createElement('canvas');
+            canvas.id = 'page-' + num;
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            document.getElementById('container').appendChild(canvas);
+
+            await page.render({ canvasContext: context, viewport }).promise;
+            pages.push({ num, canvas });
+        }
+
+        function showStatus(msg) {
+            const el = document.getElementById('status');
+            el.textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 2000);
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                scrollToPage(currentPage);
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < pdfDoc.numPages) {
+                currentPage++;
+                scrollToPage(currentPage);
+            }
+        }
+
+        function scrollToPage(num) {
+            const page = document.getElementById('page-' + num);
+            if (page) {
+                page.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            document.getElementById('pageInfo').textContent = 'Página ' + num + ' / ' + pdfDoc.numPages;
+        }
+
+        function getVisiblePage() {
+            const canvases = document.querySelectorAll('canvas');
+            let bestPage = 1;
+            let bestRatio = 0;
+
+            canvases.forEach(canvas => {
+                const rect = canvas.getBoundingClientRect();
+                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                if (visibleHeight > 0) {
+                    const ratio = visibleHeight / rect.height;
+                    if (ratio > bestRatio) {
+                        bestRatio = ratio;
+                        bestPage = parseInt(canvas.id.replace('page-', ''));
+                    }
+                }
+            });
+
+            return bestPage;
+        }
+
+        function checkForChanges() {
+            fetch('libro.pdf', { method: 'HEAD' })
+                .then(r => {
+                    const mod = new Date(r.headers.get('Last-Modified') || 0).getTime();
+                    if (lastMod && mod > lastMod) {
+                        // Guardar página visible antes de recargar
+                        currentPage = getVisiblePage();
+                        console.log('Guardando página:', currentPage);
+
+                        loadPDF().then(() => {
+                            setTimeout(() => {
+                                scrollToPage(currentPage);
+                                console.log('Restaurando página:', currentPage);
+                            }, 200);
+                        });
+                        showStatus('PDF actualizado');
+                    }
+                })
+                .catch(() => {});
+        }
+
+        // Navegación con teclado
+        window.onkeydown = (e) => {
+            if (e.ctrlKey && e.key === 'ArrowUp') { e.preventDefault(); prevPage(); }
+            if (e.ctrlKey && e.key === 'ArrowDown') { e.preventDefault(); nextPage(); }
+        };
+
+        // Detectar cambios cada segundo
+        setInterval(checkForChanges, 1000);
+
+        loadPDF();
+    </script>
+</body>
+</html>

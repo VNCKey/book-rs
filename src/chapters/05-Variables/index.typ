@@ -12,10 +12,10 @@
     js: (name: "JavaScript", icon: "🌐", color: rgb("#C7FFFA")),
   ),
   number-format: none,
-  display-icon:false,
+  display-icon: false,
   zebra-fill: none,
   stroke: none,
-  fill: rgb("#FBFAFB"),  // 👈 Color de fondo general
+  fill: rgb("#FBFAFB"), // 👈 Color de fondo general
 )
 
 = Tipos de datos
@@ -78,8 +78,8 @@ Rust tiene dos tipos compuestos principales:
 
 - Arreglos "array"
 
-#include "sections/compount_type/tuple.typ"
-#include "sections/compount_type/array.typ"
+#include "sections/compound_type/tuple.typ"
+#include "sections/compound_type/array.typ"
 
 == Collections
 
