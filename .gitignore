@@ -1,1 +1,52 @@
+# Book build output
 output/*.pdf
+
+# Rust build artifacts
+**/target/
+**/*.rs.bk
+**/*.rlib
+**/*.o
+**/*.a
+**/*.so
+**/*.dylib
+**/*.exe
+
+# Compiled binaries (keep sources only)
+rust/rustc/main
+rust/rustc/main_c
+rust/rustc/main_c_dynamic
+rust/rustc/main_c_static
+rust/rustc/main_nostd
+rust/rustc/main_rust
+rust/rustc/build/
+rust/rustc/dist/
+
+# Node / frontend (leptos, etc.)
+**/node_modules/
+**/dist/
+
+# Python / PyInstaller junk
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyz
+**/*.pkg
+**/*.spec
+
+# Editors / OS
+.zed/
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Misc local state
+**/.rustlings-state.txt
+**/.claude/
