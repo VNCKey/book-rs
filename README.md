@@ -1,6 +1,9 @@
 # Diviértete con Rust 🦀
 
+> **[LEER PRIMERO: Nuestra Visión y Misión (Enfoque TDAH/Neurodivergente)](./VISION.md)**
+
 Un libro sobre programación en Rust, escrito en [Typst](https://typst.app/).
+
 
 ## Requisitos
 

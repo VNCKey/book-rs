@@ -1,59 +1,52 @@
+== Preparando el Laboratorio: Instalación
 
+Antes de escribir nuestra primera línea de código, necesitamos nuestras herramientas. No vamos a instalar "un programa"; vamos a configurar un **entorno de ingeniería**.
 
-== Instalación de Rust
+Rust utiliza un gestor llamado #term[rustup]. Piensa en él como el centro de mando: no solo instala el lenguaje, sino que gestiona las versiones y las herramientas de análisis que nos mantendrán a salvo de errores de memoria.
 
-Rust se instala mediante rustup, el instalador oficial que gestiona versiones del compilador y herramientas asociadas.
+=== Linux y macOS: El poder de la terminal
 
-Linux y macOS
-
-Ejecuta en tu terminal:
+Si estás en un entorno basado en Unix, la instalación es una declaración de intenciones. Abre tu terminal y ejecuta:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Esto instalará:
-- El compilador: rustc
-- Gestor de paquetes: Cargo
-- Documentación estándar
-- Herramientas de desarrollo
+#importante("Durante el proceso, se te preguntará por el tipo de instalación. Presiona **1** (default) para que rustup configure todo por ti.")
 
-Presiona Enter para la instalación estándar. Luego reinicia tu terminal o ejecuta:
-
+Al terminar, activa las herramientas en tu sesión actual con:
 ```bash
 source $HOME/.cargo/env
 ```
 
-Windows
+=== Windows: El cimiento de hierro
 
-*Requisito previo:* Visual Studio Build Tools con MSVC
+En Windows, Rust necesita un "traductor" para comunicarse con el hardware de forma eficiente. Este traductor son las herramientas de compilación de C++.
 
-*Paso 1: Instalar Build Tools*
+==== Paso 1: El Enlazador (MSVC)
+Rust no puede crear ejecutables solo. Necesita el *linker* de Microsoft. 
+1. Ve a #link("https://visualstudio.microsoft.com/visual-cpp-build-tools/")[Visual Studio Build Tools].
+2. Durante la instalación, asegúrate de marcar la casilla **"Desarrollo para el escritorio con C++"**.
 
-Descarga desde: https://visualstudio.microsoft.com/es/downloads/
+*Nota de Ingeniero:* Si sientes que es una descarga pesada, tienes razón. Estamos instalando los cimientos que permiten a Rust generar binarios nativos ultra-rápidos en Windows.
 
-Tienes 2 Opciones:
-- *Opción completa:* Workload "Desktop Development with C++"
-- *Opción mínima:* En "Componentes individuales" selecciona:
-  - MSVC v143 – VS 2022 C++ x64/x86 build tools
-  - Windows 11 SDK
+==== Paso 2: El Instalador de Rust
+1. Descarga #link("https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe")[rustup-init.exe].
+2. Ejecútalo y sigue las instrucciones en pantalla. **Reinicia tu terminal** al terminar para que los cambios surtan efecto.
 
-*Paso 2: Instalar Rust*
+=== La Primera Victoria: Verificación
 
-Descarga desde: https://www.rust-lang.org/tools/install
-
-Selecciona el instalador según tu arquitectura `32-bit`, `x64`, o `ARM64`.
-
-- Ejecuta *rustup-init.exe* y presiona Enter para instalación estándar.
-
-- Reinicia tu terminal después de la instalación.
-
-Verificación
-
-Confirma que la instalación fue exitosa:
+Vamos a confirmar que tu laboratorio está listo. Escribe estos comandos y observa cómo el sistema te responde:
 
 ```bash
-rustc --version  # rustc 1.89.0 (29483883e 2025-08-04)
-cargo --version  # cargo 1.89.0 (c24e10642 2025-06-23)
-rustup --version # rustup 1.27.0 (2024-08-14)
+rustc --version  # El cerebro (Compilador)
+cargo --version  # El brazo ejecutor (Gestor de paquetes)
 ```
+
+Si ves números de versión en pantalla, felicidades: **Oficialmente eres un Rustacean en fase de despliegue.** Ya tienes el poder de construir software indestructible en tu máquina.
+
+#v(1em)
+#align(center)[
+  #image("/src/assets/rustperu.png", width: 40%) \
+  #text(gray, size: 9pt)[El viaje ha comenzado.]
+]

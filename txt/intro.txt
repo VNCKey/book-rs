@@ -1,0 +1,47 @@
+= Introducción: El Hardware y los Cimientos del Software
+
+En el mundo moderno, es fácil olvidar los orígenes de la computación. Nos hemos acostumbrado a creer que programar es simplemente escribir unas cuantas líneas de texto en un editor, presionar un botón y observar cómo todo cobra vida en la pantalla. No tiene nada de malo disfrutar de esa abstracción, pero en este libro no permitiremos que esa magia oculte lo que ocurre detrás del telón. Nos enfocaremos en desentrañar los conceptos fundamentales porque, para dominar verdaderamente Rust, perder de vista estos cimientos no es una opción.
+
+No venimos aquí solo a aprender una nueva sintaxis, sino a dominar la ingeniería de software en su estado más puro. No importa qué tan abstracto o avanzado parezca el código en el monitor: al final del día, tu computadora no es más que un inmenso entramado de circuitos y millones de transistores microscópicos, encendiéndose y apagándose en un mar incesante de ceros y unos.
+
+A lo largo de las décadas, lenguajes estrictamente necesarios forjaron la industria. Gigantes fundacionales como C y C++ fueron pioneros que le dieron al programador el control directo sobre cada circuito y cada byte de la memoria física. Eran velocísimos y eficientes. Sin embargo, la evolución de la tecnología nos hizo aprender de sus limitaciones. Ese inmenso poder exigía una perfección inalcanzable, confiando la administración manual de la memoria al ser humano. Y los seres humanos, por muy brillantes que seamos, nos cansamos y cometemos errores.
+
+Fue exactamente en esos inevitables descuidos donde nació la era de los hackers.
+
+El cine nos hizo creer que vulnerar un sistema requería de hechizos digitales. La realidad era mucho más terrenal: los atacantes simplemente entendían el hardware y la memoria física mejor que los propios creadores del código, encontrando todo tipo de vulnerabilidades estructurales. Tomemos como ejemplo solo una de las más famosas: el Desbordamiento de Búfer (Buffer Overflow). Si un programador reservaba un pequeño bloque en la RAM para una contraseña de 8 letras, el lenguaje no verificaba si el usuario escribía 20. El exceso se "desbordaba" físicamente de su caja y sobrescribía las instrucciones de los circuitos vecinos. Con este, y muchos otros métodos de corrupción de memoria, lograban engañar al procesador para tomar el control de un sistema. No era magia oscura; era física pura aplicada a la máquina.
+
+Para protegernos de estas debilidades humanas, la industria tomó un camino alternativo y creó lenguajes de alto nivel. Eran entornos que escondían los transistores detrás de recolectores de basura automáticos. Cumplieron un propósito fundamental y revolucionaron la facilidad de desarrollo, pero exigieron un sacrificio: creamos software que devora recursos y vive desconectado del hardware real.
+
+Habíamos aprendido de los errores de ambas eras y entendíamos que no podíamos seguir eligiendo entre lenguajes rápidos pero vulnerables, o lenguajes seguros pero lentos. Hacía falta crear una tecnología que resolviera esos problemas de raíz.
+
+Ese paso se materializó a partir del año 2006, cuando un ingeniero llamado Graydon Hoare quedó atrapado tras fallar el ascensor de su edificio debido a un error de memoria en su sistema operativo. Ese incidente lo impulsó a diseñar Rust: un lenguaje creado para ser tan veloz y cercano al hardware como C, pero con un compilador implacable que hace matemáticamente imposibles las fallas humanas de memoria. Y como su nombre indica, no se inspiró en el óxido que destruye el metal, sino en el biológico hongo de la roya (rust fungi), un organismo diseñado por la naturaleza para sobrevivir y no colapsar bajo ninguna condición extrema.
+
+Aquí reside el verdadero propósito de este libro: Rust y el hardware son inseparables. No puedes aprender Rust simplemente memorizando comandos; necesitas entender la máquina. Y a su vez, aprender Rust es el camino más puro para comprender cómo funciona realmente una computadora. A lo largo de estas páginas uniremos esas dos dimensiones. Estudiaremos a fondo cada pilar de Rust y veremos exactamente cómo sus reglas gobiernan los electrones dentro de tu ordenador.
+
+== La Expansión del Hardware
+
+Solemos imaginar la computadora como una pantalla y un teclado sobre un escritorio. Pero la realidad es que los sistemas computacionales se han expandido a todos los rincones del planeta: hoy, casi todo lo que tiene corriente eléctrica procesa información.
+
+Aquí es donde un lenguaje diseñado para hablar con el hardware revela su verdadero poder. Al no depender de programas intermediarios pesados, el código que aprenderás a escribir se adapta a cualquier entorno físico.
+
+Al terminar este viaje, no solo sabrás escribir código moderno. Tendrás las llaves para darle instrucciones a cualquier pieza de hardware en el mundo, desde un sensor en la palma de tu mano hasta un servidor al otro lado del planeta, convirtiéndote en un verdadero arquitecto de sistemas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A lo largo de nuestra historia emos tenido necesidades urgentes y practicas para resolver problemas, en los 40 en medio de las guerras  donde se necesitaba hacer calculos complejos, para determinar la  trayectoria de un misil tomando  factores como el viento y gravedad, le tomaba a una persona muchas horas pudiendo equivocarse en cualquier momento, debido a ello se invento ENIAC de las primeras computadoras resolviendo estos problemas en segundos, teniendo asi la primera forma de programar  y el primer

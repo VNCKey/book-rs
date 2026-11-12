@@ -7,9 +7,9 @@ Fases del Proceso
 
   Todo comienza con el código fuente, que tradicionalmente lleva la extensión `.rs`.
   #codly(
-    highlights : (
-      (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"), tag: "A"),
-      (line:1, start: 4,end: 7,fill: rgb("#C7FFFA"), tag: "B"),
+    highlights: (
+      (line: 1, start: 1, end: 2, fill: rgb("#D6FFCB"), tag: "A"),
+      (line: 1, start: 4, end: 7, fill: rgb("#C7FFFA"), tag: "B"),
     ),
   )
   ```rust
@@ -37,12 +37,12 @@ Fases del Proceso
   Esto genera un ejecutable.
 
   - Windows: ```bash
-  .\main.exe
-  ```
+    .\main.exe
+    ```
 
   - Linux/macOS: ```bash
-  ./main
-  ```
+    ./main
+    ```
 
   Resultado:```yaml
   Compilador directo rustc.
@@ -53,9 +53,9 @@ Fases del Proceso
 Crear un nuevo proyecto
 
 #codly(
-  highlights : (
-    (line:2, start:1, end:9, fill: rgb("#C7FFFA"),tag:"a"),
-    (line:2, start:11, end:20, fill: rgb("#C7FFD4"),tag:"b"),
+  highlights: (
+    (line: 2, start: 1, end: 9, fill: rgb("#C7FFFA"), tag: "a"),
+    (line: 2, start: 11, end: 20, fill: rgb("#C7FFD4"), tag: "b"),
   ),
 )
 ```bash
@@ -73,13 +73,13 @@ cd hola_mundo
 
 Estructura creada:
 #codly(
-  highlights : (
-    (line:1, start:1, end:14, fill: rgb("#CBD4FF"),tag:"Raíz del proyecto"),
-    (line:2, start:11, end:21, fill: rgb("#C7FFFA"),tag:"Registra las versiones específicas"),
-    (line:3, start:11, end:21, fill: rgb("#C7FFD4"),tag:"Define las dependencias"),
-    (line:5, start:17, end:23, fill: rgb("#FCCBFF"),tag:"Código fuente principal"),
-    (line:6, start:11, end:18, fill: rgb("#FFD9CB"),tag:"Destino de la Compilación"),
-    (line:10, start:20, fill: rgb("#FFF0CB"),tag:"El ejecutable de tu aplicación"),
+  highlights: (
+    (line: 1, start: 1, end: 14, fill: rgb("#CBD4FF"), tag: "Raíz del proyecto"),
+    (line: 2, start: 11, end: 21, fill: rgb("#C7FFFA"), tag: "Registra las versiones específicas"),
+    (line: 3, start: 11, end: 21, fill: rgb("#C7FFD4"), tag: "Define las dependencias"),
+    (line: 5, start: 17, end: 23, fill: rgb("#FCCBFF"), tag: "Código fuente principal"),
+    (line: 6, start: 11, end: 18, fill: rgb("#FFD9CB"), tag: "Destino de la Compilación"),
+    (line: 10, start: 20, fill: rgb("#FFF0CB"), tag: "El ejecutable de tu aplicación"),
   ),
 )
 
@@ -102,27 +102,29 @@ Anatomía del Proyecto: Cargo.toml
 Contenido inicial de Cargo.toml
 
 #codly(
-  highlights : (
-    (line:1, start:1, fill: rgb("#CBD4FF")),
-    (line:2, start:1,fill: rgb("#CBD4FF"),tag:"Nombre del proyecto"),
-    (line:3, start:1,fill: rgb("#CBD4FF"),tag:"Versión siguiendo"),
-    (line:4, start:1,fill: rgb("#CBD4FF"),tag:"Edición estable de Rust 2021"),
-    (line:6, start:1,fill: rgb("#FCCBFF"),tag:"crates"),
+  highlights: (
+    (line: 1, start: 1, fill: rgb("#CBD4FF")),
+    (line: 2, start: 1, fill: rgb("#CBD4FF"), tag: "Nombre del proyecto"),
+    (line: 3, start: 1, fill: rgb("#CBD4FF"), tag: "Versión siguiendo"),
+    (line: 4, start: 1, fill: rgb("#CBD4FF"), tag: "Edición estable de Rust 2021"),
+    (line: 6, start: 1, fill: rgb("#FCCBFF"), tag: "crates"),
   ),
   annotations: (
     (
-      start: 2, end : 4 ,
+      start: 2,
+      end: 4,
       content: block(
         width: 2em,
-        rotate(-90deg, reflow: true, align(center)[Metadatos])
-      )
+        rotate(-90deg, reflow: true, align(center)[Metadatos]),
+      ),
     ),
     (
-      start: 7, end : 9,
+      start: 7,
+      end: 9,
       content: block(
         width: 2em,
-        rotate(-90deg, reflow: true, align(center)[Librerías externas])
-      )
+        rotate(-90deg, reflow: true, align(center)[Librerías externas]),
+      ),
     ),
   ),
 )
@@ -147,11 +149,11 @@ edition = "2021"
 Punto de entrada: main.rs
 
 #codly(
-  highlights : (
-    (line:1, start: 1 , end: 9 ,  fill: rgb("#CBD4FF"), tag: "A"),
-    (line:2, start: 5 , end: 12 ,  fill: rgb("#C7FFFA"), tag: "B"),
-    (line:1, start: 11 , end: 12 ,  fill: rgb("#FFD9CB"), tag: "C"),
-    (line:3, start: 1 ,  fill: rgb("#FFD9CB"), tag: "C"),
+  highlights: (
+    (line: 1, start: 1, end: 9, fill: rgb("#CBD4FF"), tag: "A"),
+    (line: 2, start: 5, end: 12, fill: rgb("#C7FFFA"), tag: "B"),
+    (line: 1, start: 11, end: 12, fill: rgb("#FFD9CB"), tag: "C"),
+    (line: 3, start: 1, fill: rgb("#FFD9CB"), tag: "C"),
   ),
 )
 ```rust
@@ -173,11 +175,11 @@ cargo run
 
 
 #codly(
-  highlights : (
-    (line:1, start: 1 , fill: rgb("#CBD4FF"), tag: "A"),
-    (line:2, start: 2 , fill: rgb("#C7FFFA"), tag: "B"),
-    (line:3, start: 3 , fill: rgb("#FFD9CB"), tag: "C"),
-    (line:4, start: 1 , fill: rgb("#FCCBFF"), tag: "D"),
+  highlights: (
+    (line: 1, start: 1, fill: rgb("#CBD4FF"), tag: "A"),
+    (line: 2, start: 2, fill: rgb("#C7FFFA"), tag: "B"),
+    (line: 3, start: 3, fill: rgb("#FFD9CB"), tag: "C"),
+    (line: 4, start: 1, fill: rgb("#FCCBFF"), tag: "D"),
   ),
 )
 ```bash
@@ -204,10 +206,10 @@ Hola, Rust!
 Let
 
 #codly(
-  highlights : (
-    (line:2, start: 3,end:5, fill: rgb("#CBD4FF"), tag: "A"),
-    (line:2, start: 7,end:10, fill: rgb("#FFD9CB"), tag: "B"),
-    (line:2, start: 14,end:15, fill: rgb("#FCCBFF"), tag: "C"),
+  highlights: (
+    (line: 2, start: 3, end: 5, fill: rgb("#CBD4FF"), tag: "A"),
+    (line: 2, start: 7, end: 10, fill: rgb("#FFD9CB"), tag: "B"),
+    (line: 2, start: 14, end: 15, fill: rgb("#FCCBFF"), tag: "C"),
   ),
 )
 ```rust
@@ -231,8 +233,8 @@ Mi edad es 25
 Que pasa si queremos modificar el valor de una variable inmutable?
 
 #codly(
-  highlights : (
-    (line:3, start: 3,end:13, fill: rgb("#FCCBFF"), tag: "ERROR!!"),
+  highlights: (
+    (line: 3, start: 3, end: 13, fill: rgb("#FCCBFF"), tag: "ERROR!!"),
   ),
 )
 ```rust
@@ -275,9 +277,9 @@ Si necesitas cambiar el valor de una variable, debes declararla
 explícitamente como mutable usando let mut.
 
 #codly(
-  highlights : (
-    (line:2, start: 3,end:9, fill: rgb("#FCCBFF"), tag: "A"),
-    (line:4, start: 3, fill: rgb("#C7FFFA")),
+  highlights: (
+    (line: 2, start: 3, end: 9, fill: rgb("#FCCBFF"), tag: "A"),
+    (line: 4, start: 3, fill: rgb("#C7FFFA")),
   ),
 )
 ```rust
@@ -300,8 +302,8 @@ nombre que una anterior.
 La nueva variable "sombrea" a la anterior.
 
 #codly(
-  highlights : (
-    (line:4, start: 3, fill: rgb("#FCCBFF"), tag: "A"),
+  highlights: (
+    (line: 4, start: 3, fill: rgb("#FCCBFF"), tag: "A"),
   ),
 )
 ```rust
@@ -329,8 +331,8 @@ Mi edad es 35
 Lo que no se puede hacer es cambiar el tipo de una variable sin "sombrear".
 
 #codly(
-  highlights : (
-    (line:2, start: 1, fill: rgb("#FCCBFF"), tag: "ERROR!"),
+  highlights: (
+    (line: 2, start: 1, fill: rgb("#FCCBFF"), tag: "ERROR!"),
   ),
 )
 ```rust
@@ -345,9 +347,9 @@ En Rust, el scope está definido por llaves { }.
 
 
 #codly(
-  highlights : (
-    (line:9, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:10, start: 3, fill: rgb("#FCCBFF"), tag: "ERROR!"),
+  highlights: (
+    (line: 9, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 10, start: 3, fill: rgb("#FCCBFF"), tag: "ERROR!"),
   ),
 )
 ```rust
@@ -389,11 +391,11 @@ son absolutamente fijos y
 conocidos de antemano, como constantes matemáticas, límites, o configuraciones fijas.
 
 #codly(
-  highlights : (
-    (line:1, start: 1,end:8, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:1, start: 9,end:13, fill: rgb("#CBD4FF"), tag: "B"),
-    (line:4, start: 1, fill: rgb("#C7FFFA"), tag: "C"),
-    (line:6, start: 1, fill: rgb("#FCCBFF"), tag: "D"),
+  highlights: (
+    (line: 1, start: 1, end: 8, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 1, start: 9, end: 13, fill: rgb("#CBD4FF"), tag: "B"),
+    (line: 4, start: 1, fill: rgb("#C7FFFA"), tag: "C"),
+    (line: 6, start: 1, fill: rgb("#FCCBFF"), tag: "D"),
   ),
 )
 ```rust
@@ -433,10 +435,10 @@ durante toda la ejecución del programa.
 Se inicializan al inicio de la ejecución del programa (cuando el programa se carga,
 antes de que se ejecute la función main).
 #codly(
-  highlights : (
-    (line:1, start: 1,end:24, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:4, start: 3, fill: rgb("#FCCBFF"), tag: "B"),
-    (line:5, start: 3, fill: rgb("#FCCBFF"), tag: "C"),
+  highlights: (
+    (line: 1, start: 1, end: 24, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 4, start: 3, fill: rgb("#FCCBFF"), tag: "B"),
+    (line: 5, start: 3, fill: rgb("#FCCBFF"), tag: "C"),
   ),
 )
 ```rust
@@ -473,12 +475,12 @@ En Rust, la mayoría de las sentencias terminan con un punto y coma ;.
 Una expresión es cualquier pieza de código que se evalúa y devuelve un valor.
 
 #codly(
-  highlights : (
-    (line:2, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:5, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:3, start: 5, fill: rgb("#FCCBFF"), tag: "B"),
-    (line:4, start: 5, fill: rgb("#FFD9CB"), tag: "D"),
-    (line:7, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+  highlights: (
+    (line: 2, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 5, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 3, start: 5, fill: rgb("#FCCBFF"), tag: "B"),
+    (line: 4, start: 5, fill: rgb("#FFD9CB"), tag: "D"),
+    (line: 7, start: 3, fill: rgb("#C7FFFA"), tag: "A"),
   ),
 )
 ```rust
@@ -507,7 +509,7 @@ fn main() {
     La sentencia let realiza la acción de vincular un valor a un nombre y nunca
     devuelve un valor, Rust evita side-effect oculto.
 
-    #raw("let y = (let x = 5); ERROR!!!!",lang:"rust")
+    #raw("let y = (let x = 5); ERROR!!!!", lang: "rust")
 
     Ejemplos:
 
@@ -527,9 +529,9 @@ fn main() {
     ```
 
   - Rust prohíbe que let devuelva valor y así evita bugs
-    clásicos como #raw("if (x = 5)",lang:"rust").
+    clásicos como #raw("if (x = 5)", lang: "rust").
 
-  - #raw("println!",lang:"rust") devuelve unit type (),
+  - #raw("println!", lang: "rust") devuelve unit type (),
     y la llamada como declaración.
 
   - Rust prohíbe que let sea una expresión para eliminar una
@@ -559,8 +561,8 @@ y = 4
 En caso de poner ; al final se convierte en una sentencia
 (statement) y devuleve un unit type ().
 #codly(
-  highlights : (
-    (line:4, start: 5, fill: rgb("#D6FFCB"), tag: "A"),
+  highlights: (
+    (line: 4, start: 5, fill: rgb("#D6FFCB"), tag: "A"),
   ),
 )
 ```rust
@@ -614,7 +616,7 @@ fn main() {
 }
 ```
 
-#include "../../utils/stack.typ"
+#include "../../borradores/stack.typ"
 
 
 Heap
@@ -625,11 +627,11 @@ y tamaño son conocidos en tiempo de ejecución.
 
 
 #codly(
-  highlights : (
-    (line:2, start: 12, end: 19, fill: rgb("#C7FFFA"), tag: "A"),
-    (line:2, start: 23, fill: rgb("#CBD4FF"), tag: "B"),
-    (line:3, start: 3, fill: rgb("#FFD9CB"), tag: "C"),
-    (line:6, start: 3, fill: rgb("#FCCBFF"), tag: "D"),
+  highlights: (
+    (line: 2, start: 12, end: 19, fill: rgb("#C7FFFA"), tag: "A"),
+    (line: 2, start: 23, fill: rgb("#CBD4FF"), tag: "B"),
+    (line: 3, start: 3, fill: rgb("#FFD9CB"), tag: "C"),
+    (line: 6, start: 3, fill: rgb("#FCCBFF"), tag: "D"),
   ),
 )
 ```rust
@@ -678,7 +680,7 @@ fn main() {
   - El uso de la variable texto es invalido, ya que fue movida a texto2.
 
 
-  #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+  #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
   #let rust-orange = rgb("#ff6b35")
   #let stack-blue = rgb("#4a90e2")
@@ -740,39 +742,35 @@ fn main() {
       stack-box((0, 0), [texto], [0x582...3d00], [5], [5], valid: false),
 
       // Flecha de move
-      edge((0, 0), (1, 0), "-|>",
+      edge(
+        (0, 0),
+        (1, 0),
+        "-|>",
         label: text(size: 8pt, fill: rust-orange, weight: "bold")[Move 📦],
-        stroke: rust-orange + 2pt
+        stroke: rust-orange + 2pt,
       ),
 
       // texto2 (nuevo owner)
       stack-box((1, 0), [texto2], [0x582...3d00], [5], [5], valid: true),
 
       // Flecha al heap
-      edge((1, 0), (1, 1), "-|>",
-        label: text(size: 7pt)[ptr],
-        stroke: heap-green + 1.5pt
-      ),
+      edge((1, 0), (1, 1), "-|>", label: text(size: 7pt)[ptr], stroke: heap-green + 1.5pt),
 
       // Heap label
-      node((1, 0.5),
-        place(dx: 45mm)[
-          #text(size: 10pt, weight: "bold", fill: heap-green)[HEAP]
-        ]
-      ),
+      node((1, 0.5), place(dx: 45mm)[
+        #text(size: 10pt, weight: "bold", fill: heap-green)[HEAP]
+      ]),
 
       // Datos en heap
       heap-box((1, 1), [`[R,û,s,t]`], [[82,195,187,115,116]], [0x582...3d00]),
 
       // Nota explicativa
-      node((0, 0.8),
-        text(size: 7pt, fill: red, style: "italic")[
-          ✗ texto inválido \
-          (ownership movido)
-        ]
-      ),
-    )
+      node((0, 0.8), text(size: 7pt, fill: red, style: "italic")[
+        ✗ texto inválido \
+        (ownership movido)
+      ]),
+    ),
   ) <diag-string-move>
 
 
-  // Falta agregar mas detalles
+// Falta agregar mas detalles

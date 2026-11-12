@@ -1,84 +1,27 @@
-// #import "src/config.typ": *
-// #show: setup-document
+// ▓ PORTADA EXTERIOR
+#include "/src/utils/portada.typ"
 
-// ========================================
-// PORTADA
-// ========================================
-// #include "src/portada.typ"
 
-#include "portada.typ"
+// HOJA DE RESPETO
 #pagebreak()
+#pagebreak()
+#pagebreak()
+// FIN HOJA DE RESPETO
 
-
-
-// Config Global
+// ▓ CONFIGURACION GLOBAL
 #import "/src/config/global.typ": *
 #show: template
 
-// Tabla de contenidos
-// #outline(
-//   title: [Contenido],
-//   indent: 1em,
-//   depth: 3,
-// )
+#include "/src/contents/frond_matter.typ"
 
-#outline()
 #pagebreak()
 
-// ========================================
-// CONFIGURACIÓN PARA CONTENIDO PRINCIPAL
-// ========================================
 
-// Header solo en páginas de contenido
-// #set page(
-//   header: [
-//     #set text(size: 9pt, fill: gray)
-//     #grid(
-//       columns: (1fr, 1fr),
-//       align: (left, right),
-//       [Diviértete con Rust 🦀], context [Capítulo #counter(heading).display()],
-//     )
-//     #v(-0.7em)
-//     #line(length: 100%, stroke: 0.5pt + gray)
-//   ],
-// )
-// ========================================
-// CAPÍTULO 1: PRIMEROS PASOS
-// ========================================
-// #import "src/utils/tables.typ": apply-rust-style
+#outline(depth: 3)
 
-// #show: apply-rust-style
+#pagebreak()
 
+//Módulos:
+#include "/src/contents/mod.typ"
 
-// = Introducción a Rust
-
-// #v(1em)
-
-
-#include "/src/contents/_intro.typ"
-
-// #include "src/chapters/01-Intro/index.typ"
-
-// #include "src/chapters/04-Programa/index.typ"
-
-// #include "src/chapters/05-Variables/index.typ"
-
-// #include "src/chapters/06-Controlflow/index.typ"
-
-// #include "src/chapters/07-iteradores/index.typ"
-
-// #include "src/chapters/08-funciones/index.typ"
-
-// #include "src/chapters/09-struct/index.typ"
-
-// #include "src/chapters/10-enums/index.typ"
-
-// #include "src/chapters/11-generic/index.typ"
-
-// #include "src/chapters/12-traits/index.typ"
-
-// #include "src/chapters/13-Life_Times/index.typ"
-
-// #include "src/chapters/14-Manejo_Errores/index.typ"
-
-// #include "src/chapters/15-Modularidad/index.typ"
+#bibliography("/refs.bib")

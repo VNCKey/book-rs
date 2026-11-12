@@ -1,4 +1,5 @@
 #!/bin/bash
+export TYPST_FONT_PATHS="fonts/fonts"
 mkdir -p output
 ~/.cargo/bin/typst compile main.typ output/libro.pdf
 rm -f *.pdf

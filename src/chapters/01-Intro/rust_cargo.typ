@@ -31,14 +31,14 @@ qué ocurre el problema y cómo corregirlo, convirtiéndose en una herramienta d
 
 Proceso de Compilación
 
-#include "../../utils/diagrama_rustc.typ"
+#include "../../borradores/diagrama_rustc.typ"
 
 Todo comienza con el código fuente `main.rs`:
 
 #codly(
-  highlights : (
-    (line:1, start: 1,end: 2,fill: rgb("#D6FFCB"),),
-    (line:1, start: 4,end: 9,fill: rgb("#C7FFFA")),
+  highlights: (
+    (line: 1, start: 1, end: 2, fill: rgb("#D6FFCB")),
+    (line: 1, start: 4, end: 9, fill: rgb("#C7FFFA")),
   ),
 )
 ```rust
